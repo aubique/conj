@@ -1,0 +1,9 @@
+# Byte-compiled
+__pycache__/
+
+# pyenv
+.python-version
+
+# Virtual Environment
+venv/
+env/
