@@ -1,0 +1,15 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      [(ngModel)]="searchField"
+      value="faire"
+      [ngModelOptions]="{standalone: true}"
+    />
+  </mat-form-field>
+  <button
+    mat-stroked-button
+    (click)="onClickFind()"
+  >Search
+  </button>
+</form>
