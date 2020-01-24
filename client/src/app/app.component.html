@@ -1,0 +1,13 @@
+<div>
+  <h1>Conjugator Angular 8 Front-End</h1>
+  <app-search-form></app-search-form>
+
+  <div>
+    <app-tense-table *ngIf="storage.table">
+      <small *ngIf="storage.obs$">Raw JSON: {{ storage.obs$ | async | json }}</small>
+      <br>
+      <small>Parsed Object: {{ storage.table | json }}</small>
+    </app-tense-table>
+  </div>
+
+</div>

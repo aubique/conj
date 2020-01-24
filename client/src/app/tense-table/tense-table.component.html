@@ -1,0 +1,23 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Index column -->
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef> No.</th>
+    <td mat-cell *matCellDef="let element; let i = index;"> {{i}} </td>
+  </ng-container>
+
+  <!-- Present Tense 6 Verb Forms-->
+  <ng-container matColumnDef="presentTense">
+    <th mat-header-cell *matHeaderCellDef> Present Tense</th>
+    <td mat-cell *matCellDef="let element"> {{element.present}} </td>
+  </ng-container>
+
+  <!-- Present Perfect 6 Verb Forms -->
+  <ng-container matColumnDef="presentPerfectTense">
+    <th mat-header-cell *matHeaderCellDef> Present Perfect Tense</th>
+    <td mat-cell *matCellDef="let element"> {{element.presentPerfect}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></tr>
+</table>
+<ng-content></ng-content>
