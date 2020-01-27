@@ -1,14 +1,16 @@
-package dev.aubique.demo.models;
+package dev.aubique.conj.models;
 
-public class VerbDo {
+import java.util.List;
+
+public class Verb {
 
     private String infinitive;
     private String presentName = "Present Simple Tense";
-    private String[] presentTense;
+    private List<String> presentTense;
     private String presentPerfectName = "Present Perfect Tense";
-    private String[] presentPerfectTense;
+    private List<String> presentPerfectTense;
 
-    public VerbDo(String infinitive, String[] presentTense, String[] presentPerfectTense) {
+    public Verb(String infinitive, List<String> presentTense, List<String> presentPerfectTense) {
         this.infinitive = infinitive;
         this.presentTense = presentTense;
         this.presentPerfectTense = presentPerfectTense;
@@ -22,7 +24,7 @@ public class VerbDo {
         return presentName;
     }
 
-    public String[] getPresentTense() {
+    public List<String> getPresentTense() {
         return presentTense;
     }
 
@@ -30,7 +32,7 @@ public class VerbDo {
         return presentPerfectName;
     }
 
-    public String[] getPresentPerfectTense() {
+    public List<String> getPresentPerfectTense() {
         return presentPerfectTense;
     }
 }

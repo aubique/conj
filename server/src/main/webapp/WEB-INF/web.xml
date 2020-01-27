@@ -4,12 +4,17 @@
 
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
+
+    <listener>
+        <listener-class>dev.aubique.conj.listeners.ServletContextListenerImpl</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>api-servlet</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>dev.aubique.demo</param-value>
+            <param-value>dev.aubique.conj</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
