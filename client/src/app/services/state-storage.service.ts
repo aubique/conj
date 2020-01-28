@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
+import {ErrorObserver, Observable} from "rxjs";
 import {BaseVerb} from "../models/baseVerb";
 import {Verb} from "../models/verb";
 

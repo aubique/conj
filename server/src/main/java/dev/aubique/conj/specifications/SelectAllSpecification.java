@@ -4,6 +4,6 @@ public class SelectAllSpecification implements SqlSpecification {
 
     @Override
     public String toSqlQuery() {
-        return null;
+        return "SELECT tense.* FROM verb RIGHT JOIN tense ON verb.infinitive = tense.verb_name";
     }
 }

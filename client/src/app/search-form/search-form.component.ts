@@ -11,7 +11,8 @@ import {VerbFactoryService} from "../services/verb-factory.service";
 })
 export class SearchFormComponent {
 
-  searchField: string;
+  private searchField: string;
+  private errorMsg: string;
 
   constructor(
     private find: ApiService,
@@ -24,9 +25,8 @@ export class SearchFormComponent {
     this.storage.obs$ = this.find.getOneVerb(this.searchField);
     this.storage.obs$.subscribe((baseVerb) => {
       this.storage.table = this.factory.parseVerbObj(baseVerb);
-
       this.storage.table.tenseArray.forEach(e => console.log(e));
-    })
+    }, error => this.errorMsg = error);
   }
 
 }

@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 
 @Path("/find")
-public class FindApi {
+public class ApiFind {
 
     @GET
     @Path("/all")

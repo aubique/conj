@@ -1,4 +1,4 @@
-package dev.aubique.conj.repositories;
+package dev.aubique.conj.repository;
 
 import dev.aubique.conj.specifications.SqlSpecification;
 
