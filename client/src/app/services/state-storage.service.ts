@@ -8,7 +8,7 @@ import {Verb} from "../models/verb";
 })
 export class StateStorageService {
 
-  public table: Verb;
-  public obs$: Observable<BaseVerb>;
-  public isFound: boolean = true;
+  public table: Array<Verb>;
+  public obs$: Observable<Array<BaseVerb>>;
+  public isInitiated: boolean = false;
 }

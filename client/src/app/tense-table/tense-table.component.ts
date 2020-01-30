@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {StateStorageService} from "../services/state-storage.service";
 import {TenseObj} from "../models/baseTense";
+import {JsonConverter} from "../services/json-converter";
 
 @Component({
   selector: 'app-tense-table',
@@ -9,10 +10,19 @@ import {TenseObj} from "../models/baseTense";
 })
 export class TenseTableComponent {
 
-  displayedColumns: string[] = ['index', 'presentTense', 'presentPerfectTense'];
-  dataSource: Array<TenseObj> = this.storage.table.tenseArray;
+  displayedColumns: string[] = ['index', 'presentTense', 'presentPerfectTense', 'imperfectTense', 'futureTense'];
+  dataSource: Array<TenseObj>;
 
-  constructor(private storage: StateStorageService) {
+  constructor(private storage: StateStorageService, private toList: JsonConverter) {
+    // this.storage.obs$.subscribe(() => this.updateDataSource());
+    this.storage.obs$.subscribe((arr) => {
+      this.storage.table = this.toList.map(arr);
+      this.updateDataSource();
+    });
+  }
+
+  public updateDataSource(): void {
+    this.dataSource = this.storage.table.pop().tenseArray;
   }
 
 }

@@ -12,9 +12,9 @@ export class ApiService {
   ) {
   }
 
-  public getOneVerb(verbToSearch: string = "aller"): Observable<BaseVerb> {
+  public searchVerb(verbToSearch: string = "aller"): Observable<Array<BaseVerb>> {
     return this.http
-      .get<BaseVerb>("http://localhost:8080/api/find/" + verbToSearch)
+      .get<Array<BaseVerb>>("http://localhost:8080/api/find/" + verbToSearch)
       .pipe(catchError(this.handleError));
   }
 

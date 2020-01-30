@@ -1,5 +1,6 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
+<form class="search-form">
+
+  <mat-form-field>
     <input
       matInput
       [(ngModel)]="searchField"
@@ -8,9 +9,14 @@
     />
     <small>{{ errorMsg }}</small>
   </mat-form-field>
+
   <button
+    class="example-button"
     mat-stroked-button
+    color="primary"
     (click)="onClickFind()"
-  >Search
+  >
+    Conjuguer
   </button>
+
 </form>

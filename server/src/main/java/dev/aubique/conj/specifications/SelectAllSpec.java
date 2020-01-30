@@ -1,6 +1,6 @@
 package dev.aubique.conj.specifications;
 
-public class SelectAllSpecification implements SqlSpecification {
+public class SelectAllSpec implements SqlSpecification {
 
     @Override
     public String toSqlQuery() {

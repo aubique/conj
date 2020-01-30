@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ApiService} from "./services/api.service";
 import {StateStorageService} from "./services/state-storage.service";
-import {VerbFactoryService} from "./services/verb-factory.service";
+import {JsonConverter} from "./services/json-converter";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ApiService, VerbFactoryService]
+  providers: [ApiService, JsonConverter]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   constructor(
     private http: HttpClient,
@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public update() {
+    return null;
   }
+
 }
