@@ -1,6 +1,6 @@
-package dev.aubique.conj.listener;
+package dev.aubique.conj.servlets;
 
-import dev.aubique.conj.model.Verb;
+import dev.aubique.conj.entity.Verb;
 import dev.aubique.conj.repository.CanonRepository;
 import dev.aubique.conj.repository.VerbRepository;
 

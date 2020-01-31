@@ -1,9 +1,9 @@
 package dev.aubique.conj.repository;
 
 import dev.aubique.conj.connection.ConnectionImpl;
+import dev.aubique.conj.entity.Verb;
 import dev.aubique.conj.mappers.Mapper;
 import dev.aubique.conj.mappers.ToListOfVerbsFromResultSet;
-import dev.aubique.conj.entity.Verb;
 import dev.aubique.conj.specifications.SqlSpecification;
 
 import java.sql.Connection;
@@ -23,6 +23,16 @@ public class VerbRepository implements CanonRepository<Verb> {
 
     @Override
     public void add(Verb entity) {
+    }
+
+    public void add(SqlSpecification specification) {
+        try (Connection conn = ConnectionImpl.getConnection();
+             Statement stmt = conn.createStatement();
+        ) {
+            stmt.execute(specification.toSqlQuery());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

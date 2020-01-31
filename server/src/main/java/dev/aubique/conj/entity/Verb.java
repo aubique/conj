@@ -1,4 +1,4 @@
-package dev.aubique.conj.model;
+package dev.aubique.conj.entity;
 
 import java.util.List;
 

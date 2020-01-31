@@ -1,7 +1,7 @@
 <div
   class="app-container"
   gdAreas="header | form | content | footer"
-  gdGap="16px"
+  gdGap="12px"
   gdRows=""
 >
   <div gdArea="header">
@@ -10,8 +10,8 @@
     </mat-toolbar>
   </div>
 
-  <div gdArea="form" gdGridAlign="center center">
-    <app-search-form></app-search-form>
+  <div gdArea="form">
+    <app-search-form fxLayoutAlign="center center"></app-search-form>
   </div>
 
   <div gdArea="content">
@@ -19,8 +19,29 @@
   </div>
 
   <div gdArea="footer" gdGridAlign="stretch end">
-    <mat-toolbar>
-      <span>Les verbs disponibles à conjuguer: aller, faire, pouvoir</span>
+    <mat-toolbar fxLayoutAlign="center center">
+      <iframe
+        class="github-follow"
+        src="https://ghbtns.com/github-btn.html?user=aubique&type=follow&count=true&size=large"
+        frameborder="0"
+        scrolling="0"
+        width="220px"
+        height="30px"
+      ></iframe>
+      <iframe
+        src="https://ghbtns.com/github-btn.html?user=aubique&repo=conj&type=star&count=true&size=large"
+        frameborder="0"
+        scrolling="0"
+        width="158px"
+        height="30px"
+      ></iframe>
+      <iframe
+        src="https://ghbtns.com/github-btn.html?user=aubique&repo=aubique&type=fork&count=true&size=large"
+        frameborder="0"
+        scrolling="0"
+        width="158px"
+        height="30px"
+      ></iframe>
     </mat-toolbar>
 
     <div *ngIf="storage.obs$" hidden>
