@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ApiService} from "../services/api.service";
 import {StateStorageService} from "../services/state-storage.service";
-import {VerbFactoryService} from "../services/verb-factory.service";
+import {JsonConverter} from "../services/json-converter";
 
 @Component({
   selector: 'app-search-form',
@@ -11,22 +11,21 @@ import {VerbFactoryService} from "../services/verb-factory.service";
 })
 export class SearchFormComponent {
 
-  searchField: string;
+  private searchField: string;
+  private errorMsg: string;
 
   constructor(
     private find: ApiService,
     private storage: StateStorageService,
-    private factory: VerbFactoryService,
+    private toListOfVerbs: JsonConverter,
   ) {
   }
 
   private onClickFind() {
-    this.storage.obs$ = this.find.getOneVerb(this.searchField);
-    this.storage.obs$.subscribe((baseVerb) => {
-      this.storage.table = this.factory.parseVerbObj(baseVerb);
-
-      this.storage.table.tenseArray.forEach(e => console.log(e));
-    })
+    this.storage.obs$ = this.find.searchVerb(this.searchField.toLowerCase());
+    // this.storage.obs$.subscribe((arr) => {
+    //   this.storage.table = this.toListOfVerbs.map(arr);
+    //   // this.storage.table[0].tenseArray.forEach(e => console.log(e));
+    // }, error => this.errorMsg = error);
   }
-
 }

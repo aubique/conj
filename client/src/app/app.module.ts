@@ -12,6 +12,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    FlexLayoutModule,
     MatTableModule,
     CdkTableModule,
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
     BrowserAnimationsModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

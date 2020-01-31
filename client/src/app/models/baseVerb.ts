@@ -5,4 +5,6 @@ export interface BaseVerb {
   presentTense: string[];
   presentPerfectName: string;
   presentPerfectTense: string[];
+  imperfectTense: string[];
+  futureTense: string[];
 }
