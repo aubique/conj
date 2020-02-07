@@ -2,7 +2,8 @@ package dev.aubique.conj.specifications;
 
 public class SelectByNameSpec implements SqlSpecification {
 
-    private String infinitive;
+    private static final String SQL_QUERY = "SELECT tense.* FROM verb RIGHT JOIN tense ON verb.infinitive = tense.verb_name WHERE verb.infinitive = \'%s\'";
+    private final String infinitive;
 
     public SelectByNameSpec(String infinitive) {
         this.infinitive = infinitive;
@@ -10,8 +11,9 @@ public class SelectByNameSpec implements SqlSpecification {
 
     @Override
     public String toSqlQuery() {
-        String lineOne = "SELECT tense.* FROM verb RIGHT JOIN tense ON verb.infinitive = tense.verb_name";
-        String lineTwo = "WHERE verb.infinitive =";
-        return String.format("%s %s \'%s\'", lineOne, lineTwo, infinitive);
+        final String query = String.format(SQL_QUERY, infinitive);
+
+        System.out.println(query);
+        return query;
     }
 }

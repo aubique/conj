@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class ToListOfVerbsFromResultSet implements Mapper<ResultSet, List<Verb>> {
     final int NUMBER_OF_TENSES = 4;
 
@@ -18,12 +19,15 @@ public class ToListOfVerbsFromResultSet implements Mapper<ResultSet, List<Verb>>
         int count = 0;
 
         for (int tenseSeq = 1; rs.next(); tenseSeq++) {
+            System.out.println("\n\nNext Result Set\n\n");
             final String infinitive = rs.getString("verb_name");
 //            System.out.println(tenseSeq);
 //            System.out.println(infinitive);
 //            System.out.println(count);
 
+            //TODO: describe magic numbers
             for (int pos = 3; pos < 9; pos++) {
+                System.out.println(pos);
 //                System.out.println(rs.getString(pos));
                 tense.add(rs.getString(pos));
             }

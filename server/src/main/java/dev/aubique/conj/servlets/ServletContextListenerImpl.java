@@ -1,8 +1,7 @@
 package dev.aubique.conj.servlets;
 
-import dev.aubique.conj.entity.Verb;
-import dev.aubique.conj.repository.CanonRepository;
 import dev.aubique.conj.repository.VerbRepository;
+import dev.aubique.conj.specifications.SelectAllSpec;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -17,10 +16,12 @@ public class ServletContextListenerImpl implements ServletContextListener {
      */
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        CanonRepository<Verb> objRepository = new VerbRepository();
+        VerbRepository objRepository = new VerbRepository();
+
         context = sce.getServletContext();
         // Query to select all from tense-table
-//        objRepository.query(new SelectAllSpec());
+        objRepository.query(new SelectAllSpec());
+
         context.setAttribute("repository", objRepository);
         context.log("The repository has been loaded...");
     }
