@@ -1,4 +1,4 @@
-export interface TenseObj {
+export interface BaseTense {
 
   present: string;
   presentPerfect: string;

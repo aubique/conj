@@ -2,8 +2,8 @@ package dev.aubique.conj.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.aubique.conj.entity.VerbFactoryManger;
 import dev.aubique.conj.entity.Verb;
+import dev.aubique.conj.entity.VerbFactoryManger;
 import dev.aubique.conj.repository.VerbRepository;
 import dev.aubique.conj.specifications.InsertSpec;
 import dev.aubique.conj.specifications.SelectAllSpec;
@@ -12,6 +12,7 @@ import dev.aubique.conj.specifications.SqlSpecification;
 
 import javax.servlet.ServletContext;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ApiService {
 
@@ -19,6 +20,7 @@ public class ApiService {
     private ServletContext context;
     private SqlSpecification specification;
     private VerbRepository repository;
+    private ParserService parser;
 
     public ApiService() {
         this.context = null;
@@ -27,19 +29,33 @@ public class ApiService {
     }
 
     public String findOne(String verbName) {
+        reloadRepository();
         this.specification = new SelectByNameSpec(verbName);
-        return getQueryResult(specification);
+        this.parser = new ParserService(verbName);
+        String query = getQueryResult(specification);
+
+        if (query == null) {
+            Verb parsedVerb = new Verb(verbName, parser.parse());
+            this.addOne(parsedVerb);
+            return getParsedResult(parsedVerb);
+        }
+        return query;
     }
 
     public String findAll() {
+        reloadRepository();
         this.specification = new SelectAllSpec();
         return getQueryResult(specification);
     }
 
-    public void addOne() {
-        this.specification = new InsertSpec(dummyObj);
-        this.repository = (VerbRepository) context.getAttribute("repository");
+    public void addOne(Verb verbToAdd) {
+        reloadRepository();
+        this.specification = new InsertSpec(verbToAdd);
         this.repository.add(specification);
+    }
+
+    private void reloadRepository() {
+        this.repository = (VerbRepository) context.getAttribute("repository");
     }
 
     public void setContext(ServletContext context) {
@@ -50,10 +66,25 @@ public class ApiService {
         return this.context != null;
     }
 
-    private String getQueryResult(SqlSpecification specification) {
-        this.repository = (VerbRepository) context.getAttribute("repository");
+    private String getParsedResult(Verb parsedVerb) {
+        final Map<String, Verb> dictJson = new TreeMap<>();
+        dictJson.put(parsedVerb.getVerbName(), parsedVerb);
+        System.out.println(parsedVerb.getVerbName() + " has been parsed");
         try {
-            Map<String, Verb> queryResult = repository.query(specification);
+            return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(dictJson);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Failed to convert queryResult to JSON");
+        }
+    }
+
+    private String getQueryResult(SqlSpecification specification) {
+        Map<String, Verb> queryResult = repository.query(specification);
+        if (queryResult.isEmpty()) {
+            return null;
+        }
+        try {
+            //TODO remove sout
+            System.out.println(queryResult);
 //            System.out.println(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(queryResult));
             return new ObjectMapper().writeValueAsString(queryResult);
         } catch (JsonProcessingException e) {

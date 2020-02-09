@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {StateStorageService} from "../services/state-storage.service";
-import {TenseObj} from "../models/baseTense";
+import {BaseTense} from "../models/base-tense";
 import {JsonConverter} from "../services/json-converter";
 
 @Component({
@@ -11,7 +11,7 @@ import {JsonConverter} from "../services/json-converter";
 export class TenseTableComponent {
 
   displayedColumns: string[] = ['index', 'presentTense', 'presentPerfectTense', 'imperfectTense', 'futureTense'];
-  dataSource: Array<TenseObj>;
+  dataSource: Array<BaseTense>;
 
   constructor(private storage: StateStorageService, private toList: JsonConverter) {
     // this.storage.obs$.subscribe(() => this.updateDataSource());

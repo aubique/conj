@@ -16,7 +16,6 @@ import java.util.TreeMap;
 
 public class VerbRepository {
 
-    @Deprecated
     private Map<String, Verb> repository;
 
     public Map<String, Verb> query(SqlSpecification specification) {
@@ -46,10 +45,15 @@ public class VerbRepository {
                 Statement stmt = conn.createStatement()
         ) {
             while (spec.hasNextQuery()) {
-                System.out.println("repository.add(): " + spec.toSqlQuery());
+//                System.out.println("repository.add(): " + spec.toSqlQuery());
+                stmt.execute(spec.toSqlQuery());
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Map<String, Verb> getRepository() {
+        return repository;
     }
 }

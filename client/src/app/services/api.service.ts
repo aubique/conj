@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {BaseVerb} from "../models/baseVerb";
+import {BaseVerb} from "../models/base-verb";
 import {catchError} from "rxjs/operators";
 
 @Injectable()

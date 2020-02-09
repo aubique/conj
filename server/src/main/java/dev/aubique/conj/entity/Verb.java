@@ -8,10 +8,10 @@ import java.util.TreeMap;
 
 public class Verb implements Serializable {
 
-    private static final String presentSuffix = "_pr";
-    private static final String presentPerfectSuffix = "_pp";
-    private static final String imperfectSuffix = "_im";
-    private static final String futureSuffix = "_fu";
+    public static final String presentSuffix = "_pr";
+    public static final String presentPerfectSuffix = "_pp";
+    public static final String imperfectSuffix = "_im";
+    public static final String futureSuffix = "_fu";
 
     private String verbName;
     private String presentField;
@@ -23,7 +23,6 @@ public class Verb implements Serializable {
     private List<String> presentPerfectTenseList;
     private List<String> imperfectTenseList;
     private List<String> futureTenseList;
-
 
     public Verb(String verbName) {
         this.verbName = verbName;

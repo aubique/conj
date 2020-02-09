@@ -1,31 +1,31 @@
-import {TenseObj} from "./baseTense";
+import {BaseTense} from "./base-tense";
 
 export class Verb {
 
   // infinitive: string;
   // presentTense: string[];
   // presentPerfectTense: string[];
-  tenseArray: Array<TenseObj>;
+  tenseArray: Array<BaseTense>;
   presentName = "present-tense";
   presentPerfectName = "present-perfect-tense";
 
   constructor(
     infinitive: string,
-    presentTense: string[],
-    presentPerfectTense: string[],
-    imperfectTense: string[],
-    futureTense: string[]
+    presentTenseList: string[],
+    presentPerfectTenseList: string[],
+    imperfectTenseList: string[],
+    futureTenseList: string[]
   ) {
     console.log(infinitive);
-    console.log(presentTense);
-    this.tenseArray = new Array<TenseObj>();
+    console.log(presentTenseList);
+    this.tenseArray = new Array<BaseTense>();
 
-    for (let index in presentTense) {
+    for (let index in presentTenseList) {
       this.tenseArray.push({
-        present: presentTense[index],
-        presentPerfect: presentPerfectTense[index],
-        imperfect: imperfectTense[index],
-        future: futureTense[index]
+        present: presentTenseList[index],
+        presentPerfect: presentPerfectTenseList[index],
+        imperfect: imperfectTenseList[index],
+        future: futureTenseList[index]
       });
 
       console.log(this.tenseArray[index]);

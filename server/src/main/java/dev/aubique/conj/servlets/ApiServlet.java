@@ -56,7 +56,7 @@ public class ApiServlet {
     @Produces(MediaTypes.WADL_JSON_STRING)
     public String addOne() {
         this.checkContext();
-        this.api.addOne();
+        this.api.addOne(api.dummyObj);
         return "The verb «Manger» has been added to the DB";
     }
 }
