@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {ApiService} from "../services/api.service";
 import {StateStorageService} from "../services/state-storage.service";
-import {JsonConverter} from "../services/json-converter";
 
 @Component({
   selector: 'app-search-form',
@@ -17,7 +16,6 @@ export class SearchFormComponent {
   constructor(
     private find: ApiService,
     private storage: StateStorageService,
-    private toListOfVerbs: JsonConverter,
   ) {
   }
 

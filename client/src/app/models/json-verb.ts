@@ -1,4 +1,4 @@
-export interface BaseVerb {
+export interface JsonVerb {
 
   infinitive: string;
   presentName: string;

@@ -1,7 +1,10 @@
 import {Component} from '@angular/core';
 import {StateStorageService} from "../services/state-storage.service";
 import {BaseTense} from "../models/base-tense";
-import {JsonConverter} from "../services/json-converter";
+import {AbstractFactory} from "../mapper/abstract-factory";
+import {VerbFactory} from "../mapper/verb-factory";
+import {Verb} from "../models/verb";
+import {JsonVerb} from "../models/json-verb";
 
 @Component({
   selector: 'app-tense-table',
@@ -10,19 +13,20 @@ import {JsonConverter} from "../services/json-converter";
 })
 export class TenseTableComponent {
 
-  displayedColumns: string[] = ['index', 'presentTense', 'presentPerfectTense', 'imperfectTense', 'futureTense'];
-  dataSource: Array<BaseTense>;
+  private toVerb: AbstractFactory<Map<string, JsonVerb>, Verb> = new VerbFactory();
+  private displayedColumns: string[] = ['index', 'presentTense', 'presentPerfectTense', 'imperfectTense', 'futureTense'];
+  private dataSource: Array<BaseTense>;
 
-  constructor(private storage: StateStorageService, private toList: JsonConverter) {
+  constructor(private storage: StateStorageService) {
     // this.storage.obs$.subscribe(() => this.updateDataSource());
-    this.storage.obs$.subscribe((arr) => {
-      this.storage.table = this.toList.map(arr);
+    this.storage.obs$.subscribe((jsonDict) => {
+      this.storage.table = this.toVerb.create(jsonDict);
       this.updateDataSource();
     });
   }
 
   public updateDataSource(): void {
-    this.dataSource = this.storage.table.pop().tenseArray;
+    this.dataSource = this.storage.table.tenseArray;
   }
 
 }

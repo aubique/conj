@@ -59,6 +59,11 @@
             <artifactId>htmlunit</artifactId>
             <version>2.37.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>7.0.99</version>
+        </dependency>
 
     </dependencies>
 

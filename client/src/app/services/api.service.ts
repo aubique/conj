@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {BaseVerb} from "../models/base-verb";
+import {JsonVerb} from "../models/json-verb";
 import {catchError} from "rxjs/operators";
 
 @Injectable()
@@ -12,9 +12,9 @@ export class ApiService {
   ) {
   }
 
-  public searchVerb(verbToSearch: string = "aller"): Observable<Array<BaseVerb>> {
+  public searchVerb(verbToSearch: string = "aller"): Observable<Map<string, JsonVerb>> {
     return this.http
-      .get<Array<BaseVerb>>("http://localhost:8080/api/find/" + verbToSearch)
+      .get<Map<string, JsonVerb>>("http://localhost:8080/api/find/" + verbToSearch)
       .pipe(catchError(this.handleError));
   }
 

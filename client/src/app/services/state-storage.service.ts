@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {ErrorObserver, Observable} from "rxjs";
-import {BaseVerb} from "../models/base-verb";
+import {Observable} from "rxjs";
+import {JsonVerb} from "../models/json-verb";
 import {Verb} from "../models/verb";
 
 @Injectable({
@@ -8,7 +8,7 @@ import {Verb} from "../models/verb";
 })
 export class StateStorageService {
 
-  public table: Array<Verb>;
-  public obs$: Observable<Array<BaseVerb>>;
+  public table: Verb;
+  public obs$: Observable<Map<string, JsonVerb>>;
   public isInitiated: boolean = false;
 }

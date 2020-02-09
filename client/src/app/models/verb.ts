@@ -16,8 +16,8 @@ export class Verb {
     imperfectTenseList: string[],
     futureTenseList: string[]
   ) {
-    console.log(infinitive);
-    console.log(presentTenseList);
+    // console.log(infinitive);
+    // console.log(presentTenseList);
     this.tenseArray = new Array<BaseTense>();
 
     for (let index in presentTenseList) {
@@ -28,7 +28,7 @@ export class Verb {
         future: futureTenseList[index]
       });
 
-      console.log(this.tenseArray[index]);
+      // console.log(this.tenseArray[index]);
     }
   }
 }
