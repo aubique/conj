@@ -1,22 +1,34 @@
-<form class="search-form">
+<form (ngSubmit)="onClickFind()" [formGroup]="form" class="search-form">
 
-  <mat-form-field>
-    <input
-      matInput
-      [(ngModel)]="searchField"
-      value="faire"
-      [ngModelOptions]="{standalone: true}"
-    />
-    <small>{{ errorMsg }}</small>
-  </mat-form-field>
-
-  <button
-    class="example-button"
-    mat-stroked-button
-    color="primary"
-    (click)="onClickFind()"
+  <div>
+    <mat-form-field>
+      <input
+        formControlName="searchField"
+        matInput
+        placeholder="Verbe à conjuguer"
+      />
+    </mat-form-field>
+    <button
+      [disabled]="form.invalid || form.pending"
+      class="example-button"
+      color="primary"
+      mat-stroked-button
+      type="submit"
+    >
+      Conjuguer
+    </button>
+  </div>
+  <div
+    *ngIf="form.get('searchField').invalid && form.get('searchField').touched"
+    class="validation"
   >
-    Conjuguer
-  </button>
+    <small *ngIf="form.get('searchField').errors.required">Ce champ ne peut pas être vide.</small>
+    <small *ngIf="form.get('searchField').errors.minlength">
+      Le verbe doit contenir au moins
+      {{ form.get('searchField').errors.minlength.requiredLength }}
+      lettres.
+    </small>
+    <!--TODO: fix the styles-->
+  </div>
 
 </form>

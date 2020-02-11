@@ -51,6 +51,7 @@ public class InsertSpec implements SqlIterableSpecification {
         tenseFields.add(verbObj.getFutureField());
 
         this.queries.add(generateSqlQueryFromList(VERB_TABLE_NAME, VERB_COLUMNS, tenseFields));
+        // Skip the first element
         for (int i = 1; i < tenseFields.size(); i++) {
             this.queries.add(generateSqlQueryFromList(TENSE_TABLE_NAME, TENSE_COLUMNS,
                     verbObj.getTenseListByTenseId(tenseFields.get(i))));
