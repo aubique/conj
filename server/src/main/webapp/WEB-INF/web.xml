@@ -3,14 +3,14 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    <display-name>Archetype Created Web Application</display-name>
+    <display-name>jConj REST API</display-name>
 
     <filter>
         <filter-name>CorsFilter</filter-name>
         <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
         <init-param>
             <param-name>cors.allowed.origins</param-name>
-            <param-value>http://domainA.com,https://domainA.com,http://localhost:4200</param-value>
+            <param-value>*</param-value>
         </init-param>
         <init-param>
             <param-name>cors.allowed.methods</param-name>

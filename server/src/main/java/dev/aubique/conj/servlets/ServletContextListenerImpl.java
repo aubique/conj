@@ -1,6 +1,7 @@
 package dev.aubique.conj.servlets;
 
 import dev.aubique.conj.repository.VerbRepository;
+import dev.aubique.conj.specifications.CreateTableSpec;
 import dev.aubique.conj.specifications.SelectAllSpec;
 
 import javax.servlet.ServletContext;
@@ -20,6 +21,7 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
         context = sce.getServletContext();
         // Query to select all from tense-table
+        objRepository.add(new CreateTableSpec());
         objRepository.query(new SelectAllSpec());
 
         context.setAttribute("repository", objRepository);

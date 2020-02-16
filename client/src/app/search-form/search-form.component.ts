@@ -11,7 +11,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class SearchFormComponent implements OnInit {
 
-  private form: FormGroup;
+  public form: FormGroup;
   private searchFieldValue: string;
   private isSearchFailed: boolean;
 
@@ -28,7 +28,7 @@ export class SearchFormComponent implements OnInit {
     })
   }
 
-  private onClickFind() {
+  public onClickFind() {
     if (this.form.valid) {
       console.log('Submit form values: ', {...this.form.value});
       this.searchFieldValue = (<string>this.form.get('searchField').value).toLowerCase();

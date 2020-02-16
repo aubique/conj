@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {StateStorageService} from "../services/state-storage.service";
 import {BaseTense} from "../models/base-tense";
-import {AbstractFactory} from "../mapper/abstract-factory";
-import {VerbFactory} from "../mapper/verb-factory";
+import {AbstractFactory} from "../factory/abstract-factory";
+import {VerbFactory} from "../factory/verb-factory";
 import {Verb} from "../models/verb";
 import {JsonVerb} from "../models/json-verb";
 
@@ -14,8 +14,8 @@ import {JsonVerb} from "../models/json-verb";
 export class TenseTableComponent {
 
   private toVerb: AbstractFactory<Map<string, JsonVerb>, Verb> = new VerbFactory();
-  private displayedColumns: string[] = ['index', 'presentTense', 'presentPerfectTense', 'imperfectTense', 'futureTense'];
-  private dataSource: Array<BaseTense>;
+  public displayedColumns: string[] = ['index', 'presentTense', 'presentPerfectTense', 'imperfectTense', 'futureTense'];
+  public dataSource: Array<BaseTense>;
 
   constructor(private storage: StateStorageService) {
     // this.storage.obs$.subscribe(() => this.updateDataSource());

@@ -6,7 +6,7 @@
 >
   <div gdArea="header">
     <mat-toolbar color="primary">
-      <span>Conjugaison des verbs français</span>
+      <span>Conjugaison des verbes français</span>
     </mat-toolbar>
   </div>
 
@@ -19,29 +19,35 @@
   </div>
 
   <div gdArea="footer" gdGridAlign="stretch end">
-    <mat-toolbar fxLayoutAlign="center center">
-      <iframe
-        class="github-follow"
-        frameborder="0"
-        height="30px"
-        scrolling="0"
-        src="https://ghbtns.com/github-btn.html?user=aubique&type=follow&count=true&size=large"
-        width="220px"
-      ></iframe>
-      <iframe
-        frameborder="0"
-        height="30px"
-        scrolling="0"
-        src="https://ghbtns.com/github-btn.html?user=aubique&repo=conj&type=star&count=true&size=large"
-        width="158px"
-      ></iframe>
-      <iframe
-        frameborder="0"
-        height="30px"
-        scrolling="0"
-        src="https://ghbtns.com/github-btn.html?user=aubique&repo=aubique&type=fork&count=true&size=large"
-        width="158px"
-      ></iframe>
+    <mat-toolbar
+      fxLayoutAlign="center center"
+      fxLayout="row"
+    >
+      <div>
+        <iframe
+          frameborder="0"
+          height="30px"
+          scrolling="0"
+          src="https://ghbtns.com/github-btn.html?user=aubique&type=follow&count=true&size=large"
+          width="220px"
+        ></iframe>
+      </div>
+      <div fxFlexOffset="2.5rem" fxHide="true" fxShow.gt-xs>
+        <iframe
+          frameborder="0"
+          height="30px"
+          scrolling="0"
+          src="https://ghbtns.com/github-btn.html?user=aubique&repo=conj&type=star&count=true&size=large"
+          width="158px"
+        ></iframe>
+        <iframe
+          frameborder="0"
+          height="30px"
+          scrolling="0"
+          src="https://ghbtns.com/github-btn.html?user=aubique&repo=aubique&type=fork&count=true&size=large"
+          width="158px"
+        ></iframe>
+      </div>
     </mat-toolbar>
 
     <div *ngIf="storage.obs$" hidden>

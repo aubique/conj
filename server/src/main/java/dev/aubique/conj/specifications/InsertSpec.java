@@ -36,12 +36,13 @@ public class InsertSpec implements SqlIterableSpecification {
                 table,
                 String.join(",", columns),
                 values.stream()
-                        .map(value -> String.format("\'%s\'", value.replace("'", "''")))
+                        .map(value -> String.format("'%s'", value.replace("'", "''")))
                         .collect(Collectors.joining(","))
         );
     }
 
-    private void constructQueries(Verb verbObj) {
+    @Override
+    public void constructQueries(Verb verbObj) {
         //TODO: create getTenseFields method in entity-class
         List<String> tenseFields = new ArrayList<>();
         tenseFields.add(verbObj.getVerbName());

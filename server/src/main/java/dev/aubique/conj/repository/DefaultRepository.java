@@ -4,7 +4,7 @@ import dev.aubique.conj.specifications.SqlSpecification;
 
 import java.util.List;
 
-public interface CanonRepository<T> {
+public interface DefaultRepository<T> {
 
     void add(T entity);
 

@@ -10,5 +10,4 @@ export class StateStorageService {
 
   public table: Verb;
   public obs$: Observable<Map<string, JsonVerb>>;
-  public isInitiated: boolean = false;
 }

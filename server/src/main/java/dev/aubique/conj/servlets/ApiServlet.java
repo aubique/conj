@@ -2,7 +2,7 @@ package dev.aubique.conj.servlets;
 
 import com.sun.jersey.core.header.MediaTypes;
 import dev.aubique.conj.entity.Verb;
-import dev.aubique.conj.repository.CanonRepository;
+import dev.aubique.conj.repository.DefaultRepository;
 import dev.aubique.conj.services.ApiService;
 import dev.aubique.conj.specifications.SqlSpecification;
 
@@ -19,7 +19,7 @@ public class ApiServlet {
 
     @Context
     private ServletContext context;
-    private CanonRepository<Verb> repositoryObj;//
+    private DefaultRepository<Verb> repositoryObj;//
     private SqlSpecification specification;
     private Connection connection;
     private ApiService api = new ApiService();

@@ -20,8 +20,8 @@ public class ParserService {
     private static final String FUTURE_TENSE_DESC = "Indicatif futur";
 
     private final String BASE_URL = "https://fr.bab.la/conjugaison/francais/";
-    private final String xpathInfinitive = "//div[@class=\'quick-result-entry\'][1]/div[@class=\'quick-result-overview\']/ul/li/text()";
-    private final String xpathTense = "//h3[@class=\'conj-tense-block-header\'][text()=\'%s\']/../div";
+    private final String xpathInfinitive = "//div[@class='quick-result-entry'][1]/div[@class='quick-result-overview']/ul/li/text()";
+    private final String xpathTense = "//h3[@class='conj-tense-block-header'][text()='%s']/../div";
     private HtmlPage page = null;
     private String targetVerb = null;
     private String infinitive;
@@ -62,8 +62,8 @@ public class ParserService {
         System.out.println();
         List<HtmlDivision> divs = this.page.getByXPath(String.format(this.xpathTense, key));
         for (HtmlDivision div : divs) {
-            DomText conjPerson = div.getFirstByXPath("div[@class=\'conj-person\']/text()");
-            DomText conjResult = div.getFirstByXPath("div[@class=\'conj-result\']/text()");
+            DomText conjPerson = div.getFirstByXPath("div[@class='conj-person']/text()");
+            DomText conjResult = div.getFirstByXPath("div[@class='conj-result']/text()");
             StringBuilder conjItem = new StringBuilder();
             conjItem.append(conjPerson.getTextContent());
             conjItem.append(" ");

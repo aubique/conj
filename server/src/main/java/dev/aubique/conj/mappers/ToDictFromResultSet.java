@@ -71,7 +71,7 @@ public class ToDictFromResultSet {
 //        } catch (JsonProcessingException e) {
 //            e.printStackTrace();
 //        }
-        this.dummy = (Verb) objectMap.get("faire");
+        this.dummy = objectMap.get("faire");
         return objectMap;
     }
 
