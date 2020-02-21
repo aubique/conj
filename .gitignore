@@ -1,7 +1,0 @@
-# IntelliJ IDEA files
-*.idea/
-*.iml
-
-# Compiled files
-out/
-target/
