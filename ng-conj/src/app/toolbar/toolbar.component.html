@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <span class="menu-title">Angular test project</span>
+
+  <ng-content></ng-content>
+
+  <span class="fill-remaining-place"></span>
+
+  <button mat-icon-button
+          [matMenuTriggerFor]="menu"
+          matTooltip="Change theme">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onClickMenu(theme.darkTheme)">Dark</button>
+    <button mat-menu-item (click)="onClickMenu(theme.lightTheme)">Light</button>
+  </mat-menu>
+
+</mat-toolbar>
+
