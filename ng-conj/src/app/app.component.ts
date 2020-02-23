@@ -1,8 +1,4 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { ThemingService } from './shared/theming.service';
-import { ThemingEnum } from './shared/theming.enum';
-import { Subscription } from 'rxjs';
-import { StorageService } from './core/storage.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,27 +7,12 @@ import { StorageService } from './core/storage.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  public theme: typeof ThemingEnum = ThemingEnum;
-  private themingSubscription: Subscription;
-
-  constructor(
-    private theming: ThemingService,
-    public storage: StorageService,
-  ) {
+  constructor() {
   }
 
-  @HostBinding('class')
-  public cssClass: string;
-
   ngOnInit(): void {
-    this.themingSubscription = this.theming.theme
-      .subscribe((newStyle) => {
-          this.cssClass = newStyle;
-        },
-      );
   }
 
   ngOnDestroy(): void {
-    this.themingSubscription.unsubscribe();
   }
 }

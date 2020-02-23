@@ -4,35 +4,30 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { ThemingService } from './shared/theming.service';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { ToggleComponent } from './toggle/toggle.component';
+import { TableModule } from './features/table/table.module';
+import { CoreModule } from '@app/core.module';
+import { HomeModule } from './features/home/home.module';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
-    ToggleComponent,
   ],
   imports: [
+    // Angular
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
+    // Parent route
+    AppRoutingModule,
+    // Hot-loaded modules
+    TableModule,
+    HomeModule,
+    // Core & Shared
+    CoreModule,
+    SharedModule,
   ],
-  entryComponents: [AppComponent],
-  providers: [ThemingService],
+  // entryComponents: [AppComponent], //TODO: be aware of changes
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {

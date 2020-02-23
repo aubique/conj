@@ -1,0 +1,30 @@
+//.mat-table {
+//  display: block;
+//}
+//
+//.mat-row,
+//.mat-header-row {
+//  display: flex;
+//  border-bottom-width: 1px;
+//  border-bottom-style: solid;
+//  align-items: center;
+//  min-height: 48px;
+//  padding: 0 24px;
+//}
+//
+//.mat-cell,
+//.mat-header-cell {
+//  flex: 1;
+//  overflow: hidden;
+//  word-wrap: break-word;
+//}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #7a74a0;
+}
+
+th {
+  background: gray;
+  font-weight: bold;
+}

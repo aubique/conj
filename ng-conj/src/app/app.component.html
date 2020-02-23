@@ -1,4 +1,15 @@
-<app-toolbar>
-  <app-toggle *ngIf="storage.isAttachedToHeader"></app-toggle>
-</app-toolbar>
-<app-toggle *ngIf="!storage.isAttachedToHeader"></app-toggle>
+<div>
+
+  <div id="header-container">
+    <!--core/header-->
+  </div>
+
+  <div id="content-container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div id="footer-container">
+    <!--core/footer-->
+  </div>
+
+</div>
