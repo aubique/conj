@@ -1,0 +1,13 @@
+.card-container {
+  width: 15rem;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  //background: #7a74a0;
+}
+
+th {
+  //background: gray;
+  //font-weight: bold;
+}

@@ -1,0 +1,26 @@
+<div class="card-container">
+
+  <mat-card>
+    <mat-card-content *ngIf="tenseList">
+
+      <!--<table [dataSource]="(tenseList | async)[0]?.list" class="mat-elevation-z0" mat-table>-->
+      <table mat-table
+             fxFlexFill
+             [dataSource]="tenseList.list"
+             class="mat-elevation-z0">
+
+        <ng-container matColumnDef="tense">
+          <!--<th *matHeaderCellDef mat-header-cell>{{ (tenseList | async)[0]?.title }}</th>-->
+          <th *matHeaderCellDef mat-header-cell>{{ tenseList.title }}</th>
+          <td *matCellDef="let element" mat-cell>{{ element }}</td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="['tense']" mat-header-row></tr>
+        <tr *matRowDef="let myRowData; columns: ['tense']" mat-row></tr>
+
+      </table>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>

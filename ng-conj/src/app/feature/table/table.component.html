@@ -1,0 +1,19 @@
+<div id="table-page" class="content-container">
+
+  <mat-card class="mat-elevation-z4">
+
+    <mat-card-title>Avoir</mat-card-title>
+
+    <mat-card-content class="table-container" fxLayout="row wrap">
+      <div *ngFor="let tense of ($tenses | async); let i = index">
+
+        <p>#{{i + 1}}</p>
+        <app-card [tenseList]="tense"></app-card>
+
+      </div>
+    </mat-card-content>
+
+
+  </mat-card>
+
+</div>

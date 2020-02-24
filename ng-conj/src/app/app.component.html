@@ -1,14 +1,31 @@
-<div>
+<div
+  id="app-container"
+  gdAreas="header | content | footer"
+  gdGap="2rem"
+  gdRows="auto"
+>
 
-  <div id="header-container">
+  <div
+    id="header-grid"
+    gdArea="header"
+  >
+    <mat-toolbar color="primary">
+      <span>Conjugaison des verbs français</span>
+    </mat-toolbar>
     <!--core/header-->
   </div>
 
-  <div id="content-container">
+  <div
+    id="content-grid"
+    gdArea="content"
+  >
     <router-outlet></router-outlet>
   </div>
 
-  <div id="footer-container">
+  <div
+    id="footer-grid"
+    gdArea="footer"
+  >
     <!--core/footer-->
   </div>
 
