@@ -8,12 +8,12 @@ export class ErrorInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
-    console.log('Interceptor input', req);
+    console.log('Interceptor input:\n', req);
 
     return next.handle(req).pipe(
       tap((event) => {
         if (event.type === HttpEventType.Response)
-          console.log('Interceptor\'s caught the error: ', event);
+          console.log('Interceptor\'s caught the error:\n', event);
       }),
     );
   }

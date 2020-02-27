@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { JsonDto } from '@app/models/json-dto';
+import { TenseDto } from '@app/models/tense-dto';
 
 @Component({
   selector: 'app-card',
@@ -9,7 +9,7 @@ import { JsonDto } from '@app/models/json-dto';
 export class CardComponent implements OnInit {
 
   @Input()
-  tenseList: JsonDto;
+  tenseList: TenseDto;
 
   //columnToShow = ['tense'];
 

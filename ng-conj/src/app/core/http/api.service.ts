@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { JsonDto } from '@app/models/json-dto';
+import { VerbDto } from '@app/models/verb-dto';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,11 +11,11 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  public doGetRequest(infinitive: string): Observable<any> {
+  public doGetRequest(verbName: string): Observable<any> {
     //TODO: debug output
-    console.log(`Do Get Request: ${infinitive}`);
+    console.log(`Do Get Request: ${verbName}`);
 
     return this.http
-      .get<Array<JsonDto>>('/assets/mock/avoir.json');
+      .get<VerbDto>('/assets/mock/avoir.json');
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { VerbDto } from '@app/models/verb-dto';
 import { FacadeService } from '@app/services/facade.service';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -7,7 +8,7 @@ import { delay } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class TensesResolver implements Resolve<string> {
+export class TableResolver implements Resolve<VerbDto> {
 
   constructor(private facade: FacadeService) {
   }
@@ -15,13 +16,14 @@ export class TensesResolver implements Resolve<string> {
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
-  ): Observable<string> | Promise<string> | string {
+  ): Observable<VerbDto> | Promise<VerbDto> | VerbDto {
 
-    // Call ( ~/core/services/facade ).then( ~/core/http/api )
-    let $stream = this.facade.searchVerb(route.params['name'])
+    // Stream chain ( ~/core/services/facade ).then( ~/core/http/api ).then( /assets/mock/json )
+    let $dto = this.facade.searchVerb(route.params['name'])
       .pipe(delay(1500));
 
-    console.log(`Fetched $verbResolved: ${$stream}`);
-    return $stream;
+    console.log('Fetched Verb DTO:\n', $dto);
+    // console.log($dto);
+    return $dto;
   }
 }

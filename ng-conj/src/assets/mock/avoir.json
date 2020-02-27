@@ -1,24 +1,28 @@
-[
-  {
-    "title": "Present",
-    "list": [
-      "j'ai",
-      "tu as",
-      "il a",
-      "nous avons",
-      "vous avez",
-      "ils ont"
-    ]
-  },
-  {
-    "title": "Passé Composé",
-    "list": [
-      "j'ai eu",
-      "t'as eu",
-      "il a eu",
-      "nous avons eu",
-      "vous avez eu",
-      "ils ont eu"
-    ]
-  }
-]
+{
+  "name": "avoir",
+  "description": "to have",
+  "tenses": [
+    {
+      "title": "present",
+      "list": [
+        "j'ai",
+        "tu as",
+        "il a",
+        "nous avons",
+        "vous avez",
+        "ils ont"
+      ]
+    },
+    {
+      "title": "passé composé",
+      "list": [
+        "j'ai eu",
+        "t'as eu",
+        "il a eu",
+        "nous avons eu",
+        "vous avez eu",
+        "ils ont eu"
+      ]
+    }
+  ]
+}

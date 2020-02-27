@@ -9,16 +9,15 @@
     id="header-grid"
     gdArea="header"
   >
-    <mat-toolbar color="primary">
-      <span>Conjugaison des verbs français</span>
-    </mat-toolbar>
     <!--core/header-->
+    <app-header></app-header>
   </div>
 
   <div
     id="content-grid"
     gdArea="content"
   >
+    <!--content-->
     <router-outlet></router-outlet>
   </div>
 
@@ -27,6 +26,7 @@
     gdArea="footer"
   >
     <!--core/footer-->
+    <app-footer></app-footer>
   </div>
 
 </div>

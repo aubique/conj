@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { JsonDto } from '@app/models/json-dto';
+import { VerbDto } from '@app/models/verb-dto';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class TableComponent implements OnInit {
 
-  $tenses: Observable<JsonDto[]>;
+  $verb: Observable<VerbDto>;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,12 +23,16 @@ export class TableComponent implements OnInit {
   }
 
   private loadTenses(): void {
-    this.$tenses = this.route.data
-      .pipe(map(data => data.verbResolved));
-    //TODO: remove debug output
-    console.log(this.$tenses);
-    this.$tenses.subscribe(value => {
-      console.log(value);
+    // Retrieve DTO from ( resolver ).then( facade ).then( api )
+    this.$verb = this.route.data
+      .pipe(
+        map((data) => data.verbResolved),
+      );
+
+    //TODO: debug output to remove
+    console.log('data.verbResolved.$stream:', this.$verb);
+    this.$verb.subscribe(value => {
+      console.log('data.verbResolved.value:\n', value);
     });
   }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TensesResolver } from 'app/feature/table/tenses-resolver.service';
+import { TableResolver } from 'app/feature/table/table.resolver';
 import { TableComponent } from './table.component';
 
 
@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: TableComponent,
     resolve: {
-      verbResolved: TensesResolver,
+      verbResolved: TableResolver,
     },
   },
 ];

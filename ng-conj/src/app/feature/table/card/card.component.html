@@ -11,8 +11,8 @@
 
         <ng-container matColumnDef="tense">
           <!--<th *matHeaderCellDef mat-header-cell>{{ (tenseList | async)[0]?.title }}</th>-->
-          <th *matHeaderCellDef mat-header-cell>{{ tenseList.title }}</th>
-          <td *matCellDef="let element" mat-cell>{{ element }}</td>
+          <th *matHeaderCellDef mat-header-cell>{{ tenseList.title | titlecase }}</th>
+          <td *matCellDef="let element" mat-cell>{{ element | lowercase}}</td>
         </ng-container>
 
         <tr *matHeaderRowDef="['tense']" mat-header-row></tr>
