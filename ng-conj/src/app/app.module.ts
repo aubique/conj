@@ -26,7 +26,6 @@ import { AppComponent } from './app.component';
     CoreModule,
     SharedModule,
   ],
-  // entryComponents: [AppComponent], //TODO: be aware of changes
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -7,6 +7,7 @@ import { TableComponent } from './table.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: TableComponent,
     resolve: {
       verbResolved: TableResolver,

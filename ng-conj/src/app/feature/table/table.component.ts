@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VerbDto } from '@app/models/verb-dto';
+import { FacadeService } from '@app/services/facade.service';
+import { RouteHandlerService } from '@app/services/route-handler.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-table',
@@ -12,27 +13,20 @@ import { map } from 'rxjs/operators';
 export class TableComponent implements OnInit {
 
   $verb: Observable<VerbDto>;
+  private routeHandler: RouteHandlerService;
 
   constructor(
+    private facade: FacadeService,
     private route: ActivatedRoute,
   ) {
+    // Init a new routeHandler to manage the state of ActivatedRoute.data
+    this.routeHandler = this.facade.initRouteHandler(route);
   }
 
   ngOnInit(): void {
-    this.loadTenses();
-  }
-
-  private loadTenses(): void {
-    // Retrieve DTO from ( resolver ).then( facade ).then( api )
-    this.$verb = this.route.data
-      .pipe(
-        map((data) => data.verbResolved),
-      );
-
-    //TODO: debug output to remove
-    console.log('data.verbResolved.$stream:', this.$verb);
-    this.$verb.subscribe(value => {
-      console.log('data.verbResolved.value:\n', value);
-    });
+    this.$verb = this.routeHandler
+      .extractVerbFromRoute()
+      .subscribeToChangeUrl()
+      .stream;
   }
 }

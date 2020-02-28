@@ -8,7 +8,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
-    console.log('Interceptor input:\n', req);
+    console.log('Interceptor inputForm:\n', req);
 
     return next.handle(req).pipe(
       tap((event) => {
