@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FacadeService } from '@app/services/facade.service';
-import { Subject } from 'rxjs';
+import { ValidationService } from '@app/services/validation.service';
 
 @Component({
   selector: 'app-input',
@@ -29,21 +29,30 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.facade.loadingState.unsubscribe();
   }
 
-  get f(): { [p: string]: AbstractControl } {
+  get f() {// { [p: string]: AbstractControl } {
     return this.inputForm.controls;
   }
 
   private buildForm(): void {
     this.inputForm = this.fb.group({
-      'verb': ['', Validators.required], //TODO: add pattern validator
+      verb: ['',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(24),
+          ValidationService.twoWordsPattern,
+        ]],
     });
   }
 
   onSubmit(): void {
     this.facade.loadingState.next(true);
+    const userInput = (this.inputForm.value.verb as string).toLowerCase();
 
-    const userInput = this.inputForm.value;
+    console.log(`User Input = ${userInput}`);
     console.log('Submit form values:', {...this.inputForm.value});
-    this.facade.navigateTo(userInput.verb);
+
+    this.facade.navigateTo(userInput);
+    this.inputForm.reset();
   }
 }
