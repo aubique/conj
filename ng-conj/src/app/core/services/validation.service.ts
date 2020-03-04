@@ -6,9 +6,6 @@ import { AbstractControl } from '@angular/forms';
 })
 export class ValidationService {
 
-  constructor() {
-  }
-
   public static getValidationErrorMessage(
     validatorName: string,
     validatorError?: any,

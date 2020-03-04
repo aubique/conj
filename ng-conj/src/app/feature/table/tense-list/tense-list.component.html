@@ -1,0 +1,30 @@
+<div id="tense-list-selection" class="">
+
+  <mat-card>
+    <mat-card-content *ngIf="tenseValue">
+
+      <!--<table [dataSource]="(tenseValue | async)[0]?.list" class="mat-elevation-z0" mat-table>-->
+      <table mat-table
+             fxFlexFill
+             [dataSource]="tenseValue.list"
+             class="mat-elevation-z1">
+
+        <ng-container matColumnDef="group">
+          <!--<th *matHeaderCellDef mat-header-cell>{{ (tenseValue | async)[0]?.title }}</th>-->
+          <th *matHeaderCellDef mat-header-cell>
+            {{tenseValue.name | titlecase}} ({{tenseValue.level | lowercase}})
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element | lowercase}}
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="['group']" mat-header-row></tr>
+        <tr *matRowDef="let myRowData; columns: ['group']" mat-row></tr>
+
+      </table>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>

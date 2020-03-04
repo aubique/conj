@@ -19,7 +19,7 @@ export class TableComponent implements OnInit {
     private facade: FacadeService,
     private route: ActivatedRoute,
   ) {
-    // Init a new routeHandler to manage the state of ActivatedRoute.data
+    // Init a new RouteHandlerService to manage the state of (<ActivatedRoute>route).data
     this.routeHandler = this.facade.initRouteHandler(route);
   }
 

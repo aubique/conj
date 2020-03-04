@@ -6,7 +6,6 @@ import { ApiService } from '@app/http/api.service';
 import { VerbDto } from '@app/models/verb-dto';
 import { RouteHandlerService } from '@app/services/route-handler.service';
 import { StoreService } from '@app/services/store.service';
-import { ValidationService } from '@app/services/validation.service';
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -33,17 +32,10 @@ export class FacadeService implements OnInit {
     return this.store.$loadingState;
   }
 
-  // get validation(
-  //   validatorName: string,
-  //   validatorError?: any,
-  // ): ValidationService {
-  //   return ValidationService
-  //     .getValidationErrorMessage();
-  // }
-
   public searchVerb(name: string): Observable<VerbDto> {
     //TODO: verification needs to be performed
     console.log('search verb');
+
     return this.api.doGetRequest(name)
       .pipe(
         tap((verb: VerbDto) => {

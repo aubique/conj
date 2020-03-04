@@ -1,0 +1,20 @@
+<div id="group-table-selection" class="">
+
+  <mat-card class="mat-elevation-z4">
+
+    <mat-card-title>{{ groupValue?.name | titlecase }}</mat-card-title>
+    <mat-card-subtitle>{{ groupValue?.level | lowercase }}</mat-card-subtitle>
+
+    <mat-card-content class="tense-list-cards" fxLayout="row wrap">
+      <div *ngFor="let tense of groupValue?.list; let i = index">
+
+        <small>Tense #{{i + 1}}</small>
+        <app-tense-list [tenseValue]="tense"></app-tense-list>
+
+      </div>
+    </mat-card-content>
+
+
+  </mat-card>
+
+</div>

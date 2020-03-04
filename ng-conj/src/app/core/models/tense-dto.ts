@@ -1,5 +1,7 @@
-export interface TenseDto {
+import { DefaultDto } from '@app/models/default-dto';
 
-  title: string;
-  list: Array<string>;
+export interface TenseDto extends DefaultDto<string> {
+  // level: string;
+  // name: string;
+  // list: Array<string>;
 }

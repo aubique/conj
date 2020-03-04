@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FacadeService } from '@app/services/facade.service';
 import { ValidationService } from '@app/services/validation.service';
 
@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.facade.loadingState.unsubscribe();
   }
 
-  get f() {// { [p: string]: AbstractControl } {
+  get ctrl(): { [p: string]: AbstractControl } {
     return this.inputForm.controls;
   }
 

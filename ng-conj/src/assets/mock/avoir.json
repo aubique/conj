@@ -1,27 +1,53 @@
 {
+  "level": "verb",
   "name": "avoir",
-  "description": "to have",
-  "tenses": [
+  "list": [
     {
-      "title": "present",
+      "level": "group",
+      "name": "indicatif",
       "list": [
-        "j'ai",
-        "tu as",
-        "il a",
-        "nous avons",
-        "vous avez",
-        "ils ont"
+        {
+          "level": "tense",
+          "name": "présent",
+          "list": [
+            "j'ai",
+            "tu as",
+            "il a",
+            "nous avons",
+            "vous avez",
+            "ils ont"
+          ]
+        },
+        {
+          "level": "tense",
+          "name": "passé composé",
+          "list": [
+            "j'ai eu",
+            "t'as eu",
+            "il a eu",
+            "nous avons eu",
+            "vous avez eu",
+            "ils ont eu"
+          ]
+        }
       ]
     },
     {
-      "title": "passé composé",
+      "level": "group",
+      "name": "subjonctif",
       "list": [
-        "j'ai eu",
-        "t'as eu",
-        "il a eu",
-        "nous avons eu",
-        "vous avez eu",
-        "ils ont eu"
+        {
+          "name": "présent",
+          "level": "tense",
+          "list": [
+            "que je verse",
+            "que tu verses",
+            "qu'il verse",
+            "que nous versons",
+            "que vous versez",
+            "qu'ils versent"
+          ]
+        }
       ]
     }
   ]

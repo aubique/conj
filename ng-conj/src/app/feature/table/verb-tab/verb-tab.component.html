@@ -1,0 +1,21 @@
+<div id="verb-tab-selection" class="">
+
+  <mat-card class="mat-elevation-z8">
+
+    <mat-card-title>{{ (verb$ | async)?.name | titlecase }}</mat-card-title>
+    <mat-card-subtitle>{{ (verb$ | async)?.level | lowercase }}</mat-card-subtitle>
+
+    <mat-card-content class="group-tab-cards" fxLayout="column">
+      <div *ngFor="let group of (verb$ | async)?.list; let i = index">
+
+        <small>Group #{{i + 1}}</small>
+        <app-group-tab [groupValue]="group"></app-group-tab>
+        <!--<app-tense-list [tenseValue]="group"></app-tense-list>-->
+
+      </div>
+    </mat-card-content>
+
+
+  </mat-card>
+
+</div>
