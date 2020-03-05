@@ -1,13 +1,13 @@
-<div id="tense-list-selection" class="">
+<div id="tense-list-container">
 
   <mat-card>
     <mat-card-content *ngIf="tenseValue">
 
       <!--<table [dataSource]="(tenseValue | async)[0]?.list" class="mat-elevation-z0" mat-table>-->
-      <table mat-table
+      <table [dataSource]="tenseValue.list"
+             class="mat-elevation-z1"
              fxFlexFill
-             [dataSource]="tenseValue.list"
-             class="mat-elevation-z1">
+             mat-table>
 
         <ng-container matColumnDef="group">
           <!--<th *matHeaderCellDef mat-header-cell>{{ (tenseValue | async)[0]?.title }}</th>-->

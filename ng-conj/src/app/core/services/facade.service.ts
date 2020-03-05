@@ -6,6 +6,7 @@ import { ApiService } from '@app/http/api.service';
 import { VerbDto } from '@app/models/verb-dto';
 import { RouteHandlerService } from '@app/services/route-handler.service';
 import { StoreService } from '@app/services/store.service';
+import { InputLocationEnum } from '@shared/enums/input-location.enum';
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -23,13 +24,17 @@ export class FacadeService implements OnInit {
   ) {
   }
 
+  get loadingState(): Subject<boolean> {
+    return this.store.loadingState$;
+  }
+
+  get inputLocation(): Subject<InputLocationEnum> {
+    return this.store.inputLocationState;
+  }
+
   ngOnInit(): void {
     console.log('=======\nTRIGGER FACADE INIT\n=======');
     this.changeTitle(null);
-  }
-
-  get loadingState(): Subject<boolean> {
-    return this.store.$loadingState;
   }
 
   public searchVerb(name: string): Observable<VerbDto> {

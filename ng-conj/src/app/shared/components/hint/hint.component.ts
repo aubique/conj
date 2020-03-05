@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
 import { ValidationService } from '@app/services/validation.service';
 
 @Component({

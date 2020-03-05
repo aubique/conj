@@ -1,0 +1,31 @@
+<div id="search-form-container">
+
+  <form (ngSubmit)="onSubmit()"
+        [formGroup]="inputForm"
+  >
+
+    <mat-form-field appearance="standard" class="input-form" floatLabel="auto">
+      <!--<mat-label></mat-label>-->
+
+      <label>
+        <input formControlName="verb"
+               matInput
+               placeholder="Verbe à conjuguer">
+      </label>
+      <mat-hint>
+        <!--<small style="color: tomato">This field cannot be empty</small>-->
+        <app-hint [control]="ctrl['verb']"></app-hint>
+      </mat-hint>
+
+    </mat-form-field>
+
+    <button [disabled]="inputForm.invalid || inputForm.pending"
+            class="form-button"
+            mat-stroked-button
+            type="submit">
+      Conjuguer
+    </button>
+
+  </form>
+
+</div>

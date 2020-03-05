@@ -1,7 +1,22 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center" style="height: 5rem">
+<div id="header-container">
 
-  <span fxFlex="35">Conjugaison des verbes français</span>
-  <app-input fxFlex></app-input>
-  <button>...</button>
+  <mat-toolbar
+    class="toolbar"
+    color="primary"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+  >
+    <span fxFlex="40">Conjugaison des verbes français</span>
 
-</mat-toolbar>
+    <div class="input-center" fxFlex>
+      <app-search
+        *ngIf="isNotHomePage"
+        fxFlexFill
+      ></app-search>
+    </div>
+
+    <button>...</button>
+
+  </mat-toolbar>
+
+</div>

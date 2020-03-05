@@ -5,10 +5,8 @@ import { throwIfAlreadyLoaded } from '@app/guards/module-import.guard';
 import { ErrorInterceptor } from '@app/http/error.interceptor';
 import { RouteHandlerService } from '@app/services/route-handler.service';
 import { SharedModule } from '@shared/shared.module';
-import { SearchComponent } from 'app/core/components/search/search.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HintComponent } from './components/hint/hint.component';
 
 const ERROR_INTERCEPTOR: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -20,8 +18,6 @@ const ERROR_INTERCEPTOR: Provider = {
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SearchComponent,
-    HintComponent,
   ],
   imports: [
     CommonModule,
@@ -35,8 +31,6 @@ const ERROR_INTERCEPTOR: Provider = {
   exports: [
     HeaderComponent,
     FooterComponent,
-    SearchComponent,
-    HintComponent,
   ],
 })
 export class CoreModule {

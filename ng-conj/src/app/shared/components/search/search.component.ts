@@ -4,7 +4,7 @@ import { FacadeService } from '@app/services/facade.service';
 import { ValidationService } from '@app/services/validation.service';
 
 @Component({
-  selector: 'app-input',
+  selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
@@ -20,6 +20,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.buildForm();
   }
 
+  get ctrl(): { [p: string]: AbstractControl } {
+    return this.inputForm.controls;
+  }
+
   ngOnInit(): void {
     this.facade.loadingState
       .subscribe((state) => this.isLoading = state);
@@ -29,8 +33,15 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.facade.loadingState.unsubscribe();
   }
 
-  get ctrl(): { [p: string]: AbstractControl } {
-    return this.inputForm.controls;
+  onSubmit(): void {
+    this.facade.loadingState.next(true);
+    const userInput = (this.inputForm.value.verb as string).toLowerCase();
+
+    console.log(`User Input = ${userInput}`);
+    console.log('Submit form values:', {...this.inputForm.value});
+
+    this.facade.navigateTo(userInput);
+    this.inputForm.reset();
   }
 
   private buildForm(): void {
@@ -43,16 +54,5 @@ export class SearchComponent implements OnInit, OnDestroy {
           ValidationService.twoWordsPattern,
         ]],
     });
-  }
-
-  onSubmit(): void {
-    this.facade.loadingState.next(true);
-    const userInput = (this.inputForm.value.verb as string).toLowerCase();
-
-    console.log(`User Input = ${userInput}`);
-    console.log('Submit form values:', {...this.inputForm.value});
-
-    this.facade.navigateTo(userInput);
-    this.inputForm.reset();
   }
 }
