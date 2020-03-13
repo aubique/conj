@@ -23,10 +23,10 @@
         "app/shared/*"
       ],
       "@env": [
-        "environments/environment"
+        "environments/*"
       ],
       "@modules/*": [
-        "app/modules/*"
+        "app/features/*"
       ]
     }
   },

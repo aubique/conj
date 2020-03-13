@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Injectable, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { ApiService } from '@app/http/api.service';
 import { VerbDto } from '@app/models/verb-dto';
 import { RouteHandlerService } from '@app/services/route-handler.service';
@@ -9,6 +10,7 @@ import { StoreService } from '@app/services/store.service';
 import { InputLocationEnum } from '@shared/enums/input-location.enum';
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root',

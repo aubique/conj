@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VerbDto } from '@app/models/verb-dto';
+
 import { FacadeService } from '@app/services/facade.service';
 import { RouteHandlerService } from '@app/services/route-handler.service';
 import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-table',

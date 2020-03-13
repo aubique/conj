@@ -12,7 +12,7 @@
         <ng-container matColumnDef="group">
           <!--<th *matHeaderCellDef mat-header-cell>{{ (tenseValue | async)[0]?.title }}</th>-->
           <th *matHeaderCellDef mat-header-cell>
-            {{tenseValue.name | titlecase}} ({{tenseValue.level | lowercase}})
+            {{tenseValue.name | lowercase}} ({{tenseValue.level | lowercase}})
           </th>
           <td *matCellDef="let element" mat-cell>
             {{ element | lowercase}}

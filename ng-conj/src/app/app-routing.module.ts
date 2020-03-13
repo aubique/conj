@@ -10,11 +10,11 @@ const routes: Routes = [
   }, {
     path: 'home',
     loadChildren: () =>
-      import('./feature/home/home.module').then(m => m.HomeModule),
+      import('./features/home/home.module').then(m => m.HomeModule),
   }, {
     path: ':name',
     loadChildren: () =>
-      import('./feature/table/table.module').then(m => m.TableModule),
+      import('./features/table/table.module').then(m => m.TableModule),
   },
 ];
 

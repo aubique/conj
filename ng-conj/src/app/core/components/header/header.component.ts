@@ -17,11 +17,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.facade.inputLocation
       .subscribe((location) => {
-        if (location === InputLocationEnum.Home) {
-          this.isNotHomePage = false;
-        } else {
-          this.isNotHomePage = true;
-        }
+        this.isNotHomePage = location !== InputLocationEnum.Home;
       });
   }
 }

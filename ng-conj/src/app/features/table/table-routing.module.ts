@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TableResolver } from 'app/feature/table/table.resolver';
-import { TableComponent } from './table.component';
+
+import { TableComponent } from '@modules/table/table.component';
+import { TableResolver } from '@modules/table/table.resolver';
 
 
 const routes: Routes = [

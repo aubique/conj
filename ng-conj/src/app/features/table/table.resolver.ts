@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+
 import { VerbDto } from '@app/models/verb-dto';
 import { FacadeService } from '@app/services/facade.service';
 import { InputLocationEnum } from '@shared/enums/input-location.enum';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root',

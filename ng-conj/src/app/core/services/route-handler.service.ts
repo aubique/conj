@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { DataResolve } from '@app/models/data-resolve';
 import { VerbDto } from '@app/models/verb-dto';
 import { Observable } from 'rxjs';

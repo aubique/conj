@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+
 import { FacadeService } from '@app/services/facade.service';
 import { InputLocationEnum } from '@shared/enums/input-location.enum';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',

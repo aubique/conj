@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreModule } from '@app/core.module';
-import { SharedModule } from '@shared/shared.module';
-import { HomeModule } from 'app/feature/home/home.module';
-import { TableModule } from 'app/feature/table/table.module';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { CoreModule } from '@app/core.module';
+import { HomeModule } from '@modules/home/home.module';
+import { TableModule } from '@modules/table/table.module';
+import { SharedModule } from '@shared/shared.module';
+import { AppRoutingModule } from 'app/app-routing.module';
+import { AppComponent } from 'app/app.component';
+
 
 @NgModule({
   declarations: [
