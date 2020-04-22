@@ -2,7 +2,9 @@ package dev.aubique.conj.controller;
 
 import com.google.gson.Gson;
 import dev.aubique.conj.exceptions.ResourceNotFoundException;
-import dev.aubique.conj.model.VerbMax;
+import dev.aubique.conj.model.dto.GroupDto;
+import dev.aubique.conj.model.dto.TenseDto;
+import dev.aubique.conj.model.dto.VerbDto;
 import dev.aubique.conj.services.VerbServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,9 +24,9 @@ public class ApiController {
 
     //TODO: set apart the code for max and min
     @GetMapping({"/max/{infinitive:[a-zA-Z]+}", "/{infinitive:[a-zA-Z]+}"})
-    public ResponseEntity<VerbMax> getVerbMaxRequest(@PathVariable String infinitive) {
+    public ResponseEntity<VerbDto<GroupDto<TenseDto<String>>>> getVerbMaxRequest(@PathVariable String infinitive) {
         try {
-            final VerbMax verbMax = service.getVerbMax(infinitive);
+            final var verbMax = service.getVerbMax(infinitive);
             return ResponseEntity.ok(verbMax);
         } catch (ResourceNotFoundException ex) {
             ex.printStackTrace();

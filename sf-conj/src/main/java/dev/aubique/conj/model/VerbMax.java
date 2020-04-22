@@ -1,6 +1,9 @@
 package dev.aubique.conj.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,6 +25,7 @@ public class VerbMax {
     @Column(name = "name", length = 32, nullable = false)
     private String name;
 
+    // Indicative group
     @ElementCollection
     private List<String> indPresentList;
     @ElementCollection
@@ -39,6 +43,7 @@ public class VerbMax {
     @ElementCollection
     private List<String> indPastFutureList;
 
+    // Subjunctive group
     @ElementCollection
     private List<String> subPresentList;
     @ElementCollection
@@ -48,11 +53,11 @@ public class VerbMax {
     @ElementCollection
     private List<String> subPluperfectList;
 
+    // Conditional Imperative group
     @ElementCollection
     private List<String> conPresentList;
     @ElementCollection
     private List<String> conPastList;
-
     @ElementCollection
     private List<String> impPresentList;
 }
