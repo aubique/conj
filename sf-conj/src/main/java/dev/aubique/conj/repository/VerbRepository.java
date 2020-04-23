@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface VerbRepository extends JpaRepository<VerbMax, Long> {
 
     Optional<VerbMax> findVerbByName(String name);
+    Optional<VerbMax> findFirstByName(String name);
+    Boolean existsByName(String name);
 }

@@ -4,5 +4,5 @@ import dev.aubique.conj.model.VerbMax;
 
 public interface ParserService {
 
-    VerbMax getParsedVerb(String verbName);
+    VerbMax parseVerb(String verbName);
 }

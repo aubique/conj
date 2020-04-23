@@ -2,17 +2,17 @@ package dev.aubique.conj.controller;
 
 import com.google.gson.Gson;
 import dev.aubique.conj.exceptions.ResourceNotFoundException;
-import dev.aubique.conj.model.dto.GroupDto;
-import dev.aubique.conj.model.dto.TenseDto;
 import dev.aubique.conj.model.dto.VerbDto;
 import dev.aubique.conj.services.VerbServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ApiController {
 
@@ -22,14 +22,22 @@ public class ApiController {
     @Autowired
     private Gson gson;
 
-    //TODO: set apart the code for max and min
     @GetMapping({"/max/{infinitive:[a-zA-Z]+}", "/{infinitive:[a-zA-Z]+}"})
-    public ResponseEntity<VerbDto<GroupDto<TenseDto<String>>>> getVerbMaxRequest(@PathVariable String infinitive) {
+    public ResponseEntity<VerbDto> getVerbMaxRequest(@PathVariable String infinitive) {
         try {
-            final var verbMax = service.getVerbMax(infinitive);
+            final var verbMax = service.getMaxVerbDto(infinitive);
             return ResponseEntity.ok(verbMax);
         } catch (ResourceNotFoundException ex) {
-            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @GetMapping({"/min/{infinitive:[a-zA-Z]+}"})
+    public ResponseEntity<VerbDto> getVerbMinRequest(@PathVariable String infinitive) {
+        try {
+            final var verbMax = service.getMinVerbDto(infinitive);
+            return ResponseEntity.ok(verbMax);
+        } catch (ResourceNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }

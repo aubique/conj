@@ -1,10 +1,11 @@
-package dev.aubique.conj.services;
+package dev.aubique.conj.services.impl;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomText;
 import com.gargoylesoftware.htmlunit.html.HtmlDivision;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import dev.aubique.conj.model.VerbMax;
+import dev.aubique.conj.services.ParserService;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -96,27 +97,32 @@ public class ParserServiceImpl implements ParserService {
     }
 
     @Override
-    public VerbMax getParsedVerb(String verbName) {
-        return parseVerb(verbName);
+    public VerbMax parseVerb(String verbName) {
+        return doParsing(verbName);
     }
 
-    private VerbMax parseVerb(String verbName) {
+    private VerbMax doParsing(String verbName) {
         final VerbMax verbObj = new VerbMax();
         try {
             final HtmlPage page = client.getPage(this.BASE_URL + verbName);
-            final String infinitive = ((DomText) page.getFirstByXPath(XPATH_INFINITIVE)).getTextContent();
+            final DomText infinitiveDom = page.getFirstByXPath(XPATH_INFINITIVE);
 
-            if (infinitive != null) {
-                verbObj.setName(infinitive);
-            } else {
-                verbObj.setName(verbName);
-            }
+//            if (infinitiveDom == null) {
+//                verbObj.setName(verbName);
+//                verbObj.setName("");
+//                return null;
+//            } else {
+                verbObj.setName(infinitiveDom.getTextContent());
+//            }
 
             parseIndicative(verbObj, page);
             parseSubjunctive(verbObj, page);
             parseConditionalImperative(verbObj, page);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        } catch (NullPointerException ex) {
+            return null;
         }
 
         return verbObj;

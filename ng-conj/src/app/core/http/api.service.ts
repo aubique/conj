@@ -16,6 +16,7 @@ export class ApiService {
     console.log(`Do Get Request: ${verbName}`);
 
     return this.http
-      .get<VerbDto>('/assets/mock/avoir.json');
+      // .get<VerbDto>('/assets/mock/avoir.json');
+      .get<VerbDto>(`http://localhost:8080/${verbName}`);
   }
 }

@@ -21,6 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class ApiControllerTest {
 
+    private static String SEARCH_VERB = "aller";
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -32,8 +34,8 @@ class ApiControllerTest {
 
     @Test
     void getVerbMaxRequest() throws Exception {
-        final String verbToTest = "aller";
-        final String jsonContentExpected = "\"name\":\"aller\"";
+        final String verbToTest = SEARCH_VERB;
+        final String jsonContentExpected = String.format(",\"name\":\"%s\",", SEARCH_VERB);
 
         final var res = mockMvc.perform(get("/max/{verbToTest}", verbToTest)
                 .contentType(MediaType.TEXT_PLAIN))
