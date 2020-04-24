@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FacadeService } from '@app/services/facade.service';
 import { ValidationService } from '@app/services/validation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -12,6 +13,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   isLoading: boolean;
   inputForm: FormGroup;
+  @ViewChild('inputElement') inputElement: ElementRef<HTMLElement>;
+  @ViewChild('formDirective') formDirective: NgForm;
+  private loadingSubscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -25,12 +29,13 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.facade.loadingState
+    this.loadingSubscription = this.facade.loadingState
       .subscribe((state) => this.isLoading = state);
   }
 
   ngOnDestroy(): void {
-    this.facade.loadingState.unsubscribe();
+    if (this.loadingSubscription)
+      this.loadingSubscription.unsubscribe();
   }
 
   onSubmit(): void {
@@ -41,7 +46,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     console.log('Submit form values:', {...this.inputForm.value});
 
     this.facade.navigateTo(userInput);
+    this.inputElement.nativeElement.blur();
     this.inputForm.reset();
+    this.formDirective.resetForm();
   }
 
   private buildForm(): void {

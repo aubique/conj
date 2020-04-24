@@ -1,14 +1,17 @@
 <div id="search-form-container">
 
-  <form (ngSubmit)="onSubmit()"
-        [formGroup]="inputForm"
-  >
+  <form #formDirective="ngForm"
+        (ngSubmit)="onSubmit()"
+        [formGroup]="inputForm">
 
-    <mat-form-field appearance="standard" class="input-form" floatLabel="auto">
+    <mat-form-field appearance="standard"
+                    class="input-form"
+                    floatLabel="auto">
       <!--<mat-label></mat-label>-->
 
       <label>
-        <input formControlName="verb"
+        <input #inputElement
+               formControlName="verb"
                matInput
                placeholder="Verbe à conjuguer">
       </label>
