@@ -17,6 +17,11 @@ export class ApiService {
 
     return this.http
       // .get<VerbDto>('/assets/mock/foutre.json');
-      .get<VerbDto>(`http://localhost:8080/${verbName}`);
+      .get<VerbDto>(this.getUrlMaxVerb(verbName));
+  }
+
+  private getUrlMaxVerb(name: string): string {
+    // return `http://localhost:${environment.port}/api/max/${name}`;
+    return `/api/max/${name}`;
   }
 }

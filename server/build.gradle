@@ -36,3 +36,8 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+def profiles = 'dev'
+bootRun {
+    args = ["--spring.profiles.active=" + profiles]
+}
