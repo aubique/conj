@@ -17,7 +17,6 @@ export class TenseListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.tenseValue.list);
+    //console.log(this.tenseValue.list);//Debug output
   }
-
 }

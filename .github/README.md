@@ -92,5 +92,5 @@ CREATE DATABASE IF NOT EXISTS sfconj;
 GRANT ALL PRIVILEGES ON DATABASE sfconj TO idea;
 ```
 
-> To change datasource settings edit the properties-file located in
+> To change datasource settings edit the properties located in
 >`resources/application-dev.properties`

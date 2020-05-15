@@ -1,6 +1,6 @@
 package dev.aubique.conj.mapper;
 
-import dev.aubique.conj.model.VerbMax;
+import dev.aubique.conj.model.VerbEntity;
 import dev.aubique.conj.model.dto.GroupDto;
 import dev.aubique.conj.model.dto.TenseDto;
 import dev.aubique.conj.model.dto.VerbDto;
@@ -11,6 +11,11 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstract JavaBean for mapping/converting objects
+ * That's the parent class for {@link MaxMapper} and {@link MinMapper}
+ * It maps {@link VerbEntity} to {@link VerbDto} that is exposed by API endpoints
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -19,14 +24,14 @@ public abstract class AbstractMapper {
     private static int ITEM_WITH_NAME = 0;
     private static int FIRST_INDEX_INC = 1;
 
-    protected VerbMax verbObj;
+    protected VerbEntity verbObj;
 
-    private static TenseDto<String> mapTense(List<String> forms) {
+    private static TenseDto mapTense(List<String> forms) {
         final String level = "tense";
         final String name = forms.get(ITEM_WITH_NAME);
         final List<String> list = forms.subList(FIRST_INDEX_INC, forms.size());
 
-        return new TenseDto<>(level, name, list);
+        return new TenseDto(level, name, list);
     }
 
     private static GroupDto mapGroup(String name, List<TenseDto> tenses) {
@@ -35,7 +40,7 @@ public abstract class AbstractMapper {
         return new GroupDto(level, name, tenses);
     }
 
-    protected GroupDto<TenseDto<String>> mapIndicative(List<List<String>> tenses) {
+    protected GroupDto mapIndicative(List<List<String>> tenses) {
         final String name = "Indicatif";
         final List<TenseDto> list = new ArrayList<>();
 
@@ -50,7 +55,7 @@ public abstract class AbstractMapper {
         return mapGroup(name, list);
     }
 
-    protected GroupDto<TenseDto<String>> mapSubjunctive(List<List<String>> tenses) {
+    protected GroupDto mapSubjunctive(List<List<String>> tenses) {
         final String name = "Subjonctif";
         final List<TenseDto> list = new ArrayList<>();
 
@@ -63,7 +68,7 @@ public abstract class AbstractMapper {
         return mapGroup(name, list);
     }
 
-    protected GroupDto<TenseDto<String>> mapConditional(List<List<String>> tenses) {
+    protected GroupDto mapConditional(List<List<String>> tenses) {
         final String name = "Conditionnel";
         final List<TenseDto> list = new ArrayList<>();
 
@@ -74,7 +79,7 @@ public abstract class AbstractMapper {
         return mapGroup(name, list);
     }
 
-    protected GroupDto<TenseDto<String>> mapImperative(List<List<String>> tenses) {
+    protected GroupDto mapImperative(List<List<String>> tenses) {
         final String name = "Impératif";
         final List<TenseDto> list = new ArrayList<>();
 
@@ -85,7 +90,7 @@ public abstract class AbstractMapper {
         return mapGroup(name, list);
     }
 
-    protected VerbDto<GroupDto<TenseDto<String>>> mapVerb(List<GroupDto> list) {
+    protected VerbDto mapVerb(List<GroupDto> list) {
         final String level = "verb";
         final String name = verbObj.getName();
 //        final List<GroupDto> list = new ArrayList<>();
@@ -98,5 +103,5 @@ public abstract class AbstractMapper {
         return new VerbDto(level, name, list);
     }
 
-    public abstract VerbDto<GroupDto<TenseDto<String>>> map();
+    public abstract VerbDto map();
 }

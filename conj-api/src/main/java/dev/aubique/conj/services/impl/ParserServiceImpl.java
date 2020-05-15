@@ -4,7 +4,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomText;
 import com.gargoylesoftware.htmlunit.html.HtmlDivision;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import dev.aubique.conj.model.VerbMax;
+import dev.aubique.conj.model.VerbEntity;
 import dev.aubique.conj.services.ParserService;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +42,7 @@ public class ParserServiceImpl implements ParserService {
         return tenseContent;
     }
 
-    private static VerbMax parseIndicative(VerbMax verb, HtmlPage page) {
+    private static VerbEntity parseIndicative(VerbEntity verb, HtmlPage page) {
         final String presentIndicative = "Indicatif présent";
         final String presentPerfectIndicative = "Indicatif passé composé";
         final String presentImperfectIndicative = "Indicatif imparfait";
@@ -64,7 +64,7 @@ public class ParserServiceImpl implements ParserService {
         return verb;
     }
 
-    private static VerbMax parseSubjunctive(VerbMax verb, HtmlPage page) {
+    private static VerbEntity parseSubjunctive(VerbEntity verb, HtmlPage page) {
         final String presentSubjunctive = "Subjonctif présent";
         final String pastSubjunctive = "Subjonctif passé";
         final String imperfectSubjunctive = "Subjonctif imparfait";
@@ -78,7 +78,7 @@ public class ParserServiceImpl implements ParserService {
         return verb;
     }
 
-    private static VerbMax parseConditionalImperative(VerbMax verb, HtmlPage page) {
+    private static VerbEntity parseConditionalImperative(VerbEntity verb, HtmlPage page) {
         final String presentConditional = "Conditionnel présent";
         final String pastConditional = "Conditionnel passé";
         final String presentImperative = "Impératif";
@@ -97,12 +97,12 @@ public class ParserServiceImpl implements ParserService {
     }
 
     @Override
-    public VerbMax parseVerb(String verbName) {
+    public VerbEntity parseVerb(String verbName) {
         return doParsing(verbName);
     }
 
-    private VerbMax doParsing(String verbName) {
-        final VerbMax verbObj = new VerbMax();
+    private VerbEntity doParsing(String verbName) {
+        final VerbEntity verbObj = new VerbEntity();
         try {
             final HtmlPage page = client.getPage(this.BASE_URL + verbName);
             final DomText infinitiveDom = page.getFirstByXPath(XPATH_INFINITIVE);

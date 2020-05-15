@@ -1,5 +1,7 @@
 package dev.aubique.conj.model;
 
+import dev.aubique.conj.model.dto.VerbDto;
+import dev.aubique.conj.services.VerbService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +10,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Simple JavaBean domain object representing Verb
+ * This POJO is handled by {@link VerbService} to be be parsed or extracted from DB
+ * It stores the tenses as {@code List<String>} in Persistence
+ * The data object is converted to corresponding DTO {@link VerbDto} afterwards
+ */
 // Annotations to build and test
 @Builder
 @NoArgsConstructor
@@ -16,7 +24,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "verb")
-public class VerbMax {
+public class VerbEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
