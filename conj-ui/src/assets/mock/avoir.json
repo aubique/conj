@@ -1,0 +1,268 @@
+{
+  "level": "verb",
+  "name": "avoir",
+  "list": [
+    {
+      "level": "group",
+      "name": "infinitif",
+      "list": [
+        {
+          "name": "présent",
+          "level": "tense",
+          "list": [
+            "avoir"
+          ]
+        },
+        {
+          "name": "passé",
+          "level": "tense",
+          "list": [
+            "avoir eu"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "group",
+      "name": "participe",
+      "list": [
+        {
+          "name": "présent",
+          "level": "tense",
+          "list": [
+            "ayant"
+          ]
+        },
+        {
+          "name": "passé",
+          "level": "tense",
+          "list": [
+            "eu"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "group",
+      "name": "indicatif",
+      "list": [
+        {
+          "level": "tense",
+          "name": "présent",
+          "list": [
+            "j'ai",
+            "t'as",
+            "il a",
+            "nous avons",
+            "vous avez",
+            "ils ont"
+          ]
+        },
+        {
+          "level": "tense",
+          "name": "passé simple",
+          "list": [
+            "j'eus",
+            "tu eus",
+            "il eut",
+            "nous eûmes",
+            "vous eûtes",
+            "ils eurent"
+          ]
+        },
+        {
+          "level": "tense",
+          "name": "imparfait",
+          "list": [
+            "j'avais",
+            "t'avais",
+            "il avait",
+            "nous avions",
+            "vous aviez",
+            "ils avaient"
+          ]
+        },
+        {
+          "level": "tense",
+          "name": "futur simple",
+          "list": [
+            "j'aurai",
+            "t'auras",
+            "il aura",
+            "nous aurons",
+            "vous aurez",
+            "ils auront"
+          ]
+        },
+        {
+          "level": "tense",
+          "name": "passé composé",
+          "list": [
+            "j'ai eu",
+            "t'as eu",
+            "il a eu",
+            "nous avons eu",
+            "vous avez eu",
+            "ils ont eu"
+          ]
+        },
+        {
+          "level": "tense",
+          "name": "passé antérieur",
+          "list": [
+            "j'eus eu",
+            "tu eus eu",
+            "il eut eu",
+            "nous eûmes eu",
+            "vous eûtes eu",
+            "ils eurent eu"
+          ]
+        },
+        {
+          "level": "tense",
+          "name": "plus-que-parfait",
+          "list": [
+            "j'avais eu",
+            "t'avais eu",
+            "il avait eu",
+            "nous avions eu",
+            "vous aviez eu",
+            "ils avaient eu"
+          ]
+        },
+        {
+          "level": "tense",
+          "name": "futur antérieur",
+          "list": [
+            "j'aurais eu",
+            "t'auras eu",
+            "il aura eu",
+            "nous aurons eu",
+            "vous aurez eu",
+            "ils auront eu"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "group",
+      "name": "subjonctif",
+      "list": [
+        {
+          "name": "présent",
+          "level": "tense",
+          "list": [
+            "que j'aie",
+            "que tu aies",
+            "qu'il ait",
+            "que nous ayons",
+            "que vous ayez",
+            "qu'ils aient"
+          ]
+        },
+        {
+          "name": "passé",
+          "level": "tense",
+          "list": [
+            "que j'aie eu",
+            "que tu aies eu",
+            "qu'il ait eu",
+            "que nous ayons eu",
+            "que vous ayez eu",
+            "qu'ils aient eu"
+          ]
+        },
+        {
+          "name": "imparfait",
+          "level": "tense",
+          "list": [
+            "que j'eusse",
+            "que tu eusses",
+            "qu'il eût",
+            "que nous eussions",
+            "que vous eussiez",
+            "qu'ils eussent"
+          ]
+        },
+        {
+          "name": "plus-que-parfait",
+          "level": "tense",
+          "list": [
+            "que j'eusse eu",
+            "que tu eusses eu",
+            "qu'il eût eu",
+            "que nous eussions eu",
+            "que vous eussiez eu",
+            "qu'ils eussent eu"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "group",
+      "name": "conditionnel",
+      "list": [
+        {
+          "name": "présent",
+          "level": "tense",
+          "list": [
+            "j'aurais",
+            "t'aurais",
+            "il aurait",
+            "nous aurions",
+            "vous auriez",
+            "ils auraient"
+          ]
+        },
+        {
+          "name": "passé 1re forme",
+          "level": "tense",
+          "list": [
+            "j'aurais eu",
+            "tu aurais eu",
+            "il aurait eu",
+            "nous aurons eu",
+            "vous auriez eu",
+            "ils auraient eu"
+          ]
+        },
+        {
+          "name": "passé 2e forme",
+          "level": "tense",
+          "list": [
+            "j'eusse eu",
+            "tu eusses eu",
+            "il eût eu",
+            "nous eussions eu",
+            "vous eussiez eu",
+            "ils eussent eu"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "group",
+      "name": "impératif",
+      "list": [
+        {
+          "name": "présent",
+          "level": "tense",
+          "list": [
+            "aie",
+            "ayons",
+            "ayez"
+          ]
+        },
+        {
+          "name": "passé",
+          "level": "tense",
+          "list": [
+            "aie eu",
+            "ayons eu",
+            "ayez eu"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+* {
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.center-screen-x {
+  position: fixed;
+  left: 50%;
+  //top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}

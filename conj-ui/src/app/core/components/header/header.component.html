@@ -1,0 +1,22 @@
+<div id="header-container">
+
+  <mat-toolbar
+    class="toolbar"
+    color="primary"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+  >
+    <span fxFlex="40">Conjugaison des verbes français</span>
+
+    <div class="input-center" fxFlex>
+      <app-search
+        *ngIf="isNotHomePage"
+        fxFlexFill
+      ></app-search>
+    </div>
+
+    <button fxHide>...</button>
+
+  </mat-toolbar>
+
+</div>
