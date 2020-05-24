@@ -1,7 +1,6 @@
 package dev.aubique.conj.controller;
 
-import com.google.gson.Gson;
-import dev.aubique.conj.repository.VerbRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +25,12 @@ class ApiControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private Gson gson;
-
-    @Autowired
-    private VerbRepository repository;
-
+    @DisplayName("respond with 200 code and contain JSON with Search Verb")
     @Test
-    void getVerbMaxRequest() throws Exception {
-        final String verbToTest = SEARCH_VERB;
+    void maxRequestShouldBe200AndContainSearchVerb() throws Exception {
         final String jsonContentExpected = String.format(",\"name\":\"%s\",", SEARCH_VERB);
 
-        final var res = mockMvc.perform(get("/max/{verbToTest}", verbToTest)
+        final var res = mockMvc.perform(get("/api/max/{verbToTest}", SEARCH_VERB)
                 .contentType(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))

@@ -19,9 +19,13 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    clientSide
+}
+
 dependencies {
     /// ANGULAR SPA
-    implementation(project(':conj-ui'))
+    clientSide(project(':conj-ui'))
     /// SPRING BOOT, TESTING
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation('org.springframework.boot:spring-boot-starter-web') {
@@ -30,7 +34,8 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    /// LOMBOK, DATABASE
+    testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+    /// LOMBOK, DB DRIVER
     runtimeOnly 'org.postgresql:postgresql'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -46,4 +51,10 @@ test {
 def profiles = 'dev'
 bootRun {
     args = ["--spring.profiles.active=" + profiles]
+}
+
+jar {
+    from {
+        configurations.clientSide.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
