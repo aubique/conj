@@ -28,7 +28,6 @@ class MaxMapperTest {
 
     private VerbEntity verbObj;
     private MaxMapper mapperReal;
-    private MaxMapper mapperMock;
 
     @BeforeAll
     static void classSetUp() {
@@ -39,7 +38,6 @@ class MaxMapperTest {
     void setUp() {
         verbObj = new AllerVerbFactory().getEntity();
         mapperReal = new MaxMapper(verbObj);
-        mapperMock = mock(MaxMapper.class);
     }
 
     @AfterEach

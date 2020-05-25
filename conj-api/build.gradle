@@ -36,9 +36,10 @@ dependencies {
     }
     testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
     /// LOMBOK, DB DRIVER
-    runtimeOnly 'org.postgresql:postgresql'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql'
+    testRuntimeOnly 'com.h2database:h2'
     /// 3RD PARTY
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
     implementation group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.40.0'

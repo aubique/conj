@@ -1,5 +1,6 @@
 package dev.aubique.conj.services.impl;
 
+import dev.aubique.conj.enums.JsonMapperType;
 import dev.aubique.conj.exceptions.ResourceNotFoundException;
 import dev.aubique.conj.model.VerbEntity;
 import dev.aubique.conj.model.dto.VerbDto;
@@ -43,6 +44,18 @@ public class VerbServiceImpl implements VerbService {
     public VerbDto getMinVerbDto(String verbName)
             throws ResourceNotFoundException {
         return mapper.mapToMin(findVerb(verbName));
+    }
+
+    public VerbDto getVerbDto(String verbName, JsonMapperType type)
+            throws ResourceNotFoundException {
+        switch (type) {
+            case EXTENDED:
+                return getMaxVerbDto(verbName);
+            case MINIMAL:
+                return getMinVerbDto(verbName);
+            default:
+                throw new RuntimeException("JsonMapperType enum is not found");
+        }
     }
 
     private Optional<VerbEntity> doInternalSearch(String name) {

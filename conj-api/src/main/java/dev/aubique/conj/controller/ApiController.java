@@ -1,6 +1,7 @@
 package dev.aubique.conj.controller;
 
 import com.google.gson.Gson;
+import dev.aubique.conj.enums.JsonMapperType;
 import dev.aubique.conj.exceptions.ResourceNotFoundException;
 import dev.aubique.conj.model.dto.VerbDto;
 import dev.aubique.conj.services.VerbService;
@@ -25,19 +26,20 @@ public class ApiController {
 
     @GetMapping({"/max/{infinitive:[a-zA-Z]+}", "/{infinitive:[a-zA-Z]+}"})
     public ResponseEntity<VerbDto> getVerbMaxRequest(@PathVariable String infinitive) {
-        try {
-            final var verbMax = service.getMaxVerbDto(infinitive);
-            return ResponseEntity.ok(verbMax);
-        } catch (ResourceNotFoundException ex) {
-            // Not Found (404)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+        return provideResponse(infinitive, JsonMapperType.EXTENDED);
     }
 
     @GetMapping({"/min/{infinitive:[a-zA-Z]+}"})
     public ResponseEntity<VerbDto> getVerbMinRequest(@PathVariable String infinitive) {
+        return provideResponse(infinitive, JsonMapperType.MINIMAL);
+    }
+
+    private ResponseEntity<VerbDto> provideResponse(
+            String infinitive,
+            JsonMapperType type
+    ) {
         try {
-            final var verbMax = service.getMinVerbDto(infinitive);
+            final var verbMax = service.getVerbDto(infinitive, type);
             return ResponseEntity.ok(verbMax);
         } catch (ResourceNotFoundException ex) {
             // Not Found (404)

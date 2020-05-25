@@ -38,6 +38,5 @@ class ApiControllerTest {
 
         final String jsonResponse = res.getResponse().getContentAsString();
         assertThat(jsonResponse).contains(jsonContentExpected);
-        System.out.println(jsonResponse);
     }
 }
