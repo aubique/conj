@@ -1,6 +1,6 @@
 package dev.aubique.conj.services.impl;
 
-import dev.aubique.conj.enums.JsonMapperType;
+import dev.aubique.conj.model.enums.JsonMapperType;
 import dev.aubique.conj.exceptions.ResourceNotFoundException;
 import dev.aubique.conj.model.VerbEntity;
 import dev.aubique.conj.model.dto.VerbDto;
