@@ -4,11 +4,13 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from '@app/http/api.service';
+import { Theme } from '@app/models/theme';
 import { VerbDto } from '@app/models/verb-dto';
 import { RouteHandlerService } from '@app/services/route-handler.service';
 import { StoreService } from '@app/services/store.service';
+import { ThemeService } from '@app/services/theme.service';
 import { InputLocationEnum } from '@shared/enums/input-location.enum';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 
@@ -23,6 +25,7 @@ export class FacadeService implements OnInit {
     private titleService: Title,
     private router: Router,
     private location: Location,
+    private themeService: ThemeService,
   ) {
   }
 
@@ -31,12 +34,17 @@ export class FacadeService implements OnInit {
   }
 
   get inputLocation(): Subject<InputLocationEnum> {
-    return this.store.inputLocationState;
+    return this.store.inputLocationState$;
+  }
+
+  get themeState$(): BehaviorSubject<Theme> {
+    return this.themeService.currentTheme$;
   }
 
   ngOnInit(): void {
     console.log('=======\nTRIGGER FACADE INIT\n=======');
     this.changeTitle(null);
+    this.themeService.ngOnInit();
   }
 
   public searchVerb(name: string): Observable<VerbDto> {
@@ -67,5 +75,10 @@ export class FacadeService implements OnInit {
 
   public navigateTo(url: string): void {
     this.router.navigate([url]);
+  }
+
+  toggleTheme(): void {
+    this.themeService.setNextTheme();
+    console.log(this.themeService.currentTheme$);//TODO remove out
   }
 }

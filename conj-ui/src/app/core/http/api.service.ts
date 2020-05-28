@@ -16,8 +16,8 @@ export class ApiService {
     console.log(`Do Get Request: ${verbName}`);
 
     return this.http
-      // .get<VerbDto>('/assets/mock/foutre.json');
-      .get<VerbDto>(this.getUrlMaxVerb(verbName));
+      .get<VerbDto>('/assets/mock/foutre.json');
+    // .get<VerbDto>(this.getUrlMaxVerb(verbName));
   }
 
   private getUrlMaxVerb(name: string): string {
