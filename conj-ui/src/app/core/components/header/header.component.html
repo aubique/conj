@@ -15,7 +15,9 @@
       ></app-search>
     </div>
 
-    <button fxHide>...</button>
+    <mat-slide-toggle (click)="onSlideToggle()">
+      <mat-icon aria-hidden="false" aria-label="Change the theme color">highlight</mat-icon>
+    </mat-slide-toggle>
 
   </mat-toolbar>
 

@@ -79,6 +79,5 @@ export class FacadeService implements OnInit {
 
   toggleTheme(): void {
     this.themeService.setNextTheme();
-    console.log(this.themeService.currentTheme$);//TODO remove out
   }
 }

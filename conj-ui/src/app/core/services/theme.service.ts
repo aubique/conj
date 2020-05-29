@@ -8,7 +8,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ThemeService implements OnInit {
 
-  // private themes: BehaviorSubject<Theme[]>;
   private _currentTheme: BehaviorSubject<Theme>;
 
   constructor(private overlay: OverlayContainer) {
@@ -29,11 +28,9 @@ export class ThemeService implements OnInit {
     lightDefault.next = darkDefault;
     darkDefault.next = lightDefault;
 
-    // this.themes = new BehaviorSubject<Theme[]>([lightDefault, darkDefault]);
     this._currentTheme = new BehaviorSubject<Theme>(darkDefault);
 
     this.setOverlayTheme(this._currentTheme.value.name);
-    console.log(this._currentTheme);//TODO remove out
   }
 
   private setOverlayTheme = (newTheme: string, oldTheme?: string) => {

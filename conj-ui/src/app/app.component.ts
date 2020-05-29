@@ -10,7 +10,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  // themeClass = 'default';
   themeClass: BehaviorSubject<Theme>;
 
   constructor(
@@ -21,7 +20,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.themeClass = this.service.themeState$;
-    // this.service.themeState$.subscribe((t: Theme) => this.themeClass = t.name);
   }
 
   ngOnDestroy(): void {
