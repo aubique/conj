@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Theme } from '@app/models/theme';
 import { FacadeService } from '@app/services/facade.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +10,16 @@ import { FacadeService } from '@app/services/facade.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  constructor(private facade: FacadeService) {
-    this.facade.ngOnInit();
+  themeClass: BehaviorSubject<Theme>;
+
+  constructor(
+    private service: FacadeService,
+  ) {
+    this.service.ngOnInit();
   }
 
   ngOnInit(): void {
+    this.themeClass = this.service.themeState$;
   }
 
   ngOnDestroy(): void {

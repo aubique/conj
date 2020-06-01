@@ -1,25 +1,31 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/theming';
+@import './assets/styles/variables.scss';
+@import "./assets/styles/material-styles.scss";
+@import "./assets/styles/material-snacker.scss";
 
-* {
-  box-sizing: border-box;
+@include mat-core();
+
+.light-default {
+  $default-theme: mat-light-theme($indigo-light, $deep-orange);
+  @include style-theme($default-theme);
+  @include angular-material-theme($default-theme);
 }
 
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  position: relative;
-  margin: 0;
-  padding: 0;
+.dark-default {
+  $default-theme: mat-dark-theme($indigo-dark, $deep-orange);
+  @include style-theme($default-theme);
+  @include angular-material-theme($default-theme);
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', 'sans-serif';
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 .center-screen-x {

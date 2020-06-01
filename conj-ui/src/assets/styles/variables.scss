@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+
+$light-blue: mat-palette($mat-light-blue, A400);
+$red: mat-palette($mat-red);
+$deep-orange: mat-palette($mat-deep-orange, A200);
+$pink: mat-palette($mat-red, A100);
+$crimson: mat-palette($mat-red, A400);
+
+/*-- Dark Theme Colors --*/
+$green-dark: mat-palette($mat-green, A400);
+$indigo-dark: mat-palette($mat-indigo, A200);
+$purple-dark: mat-palette($mat-purple, A700);
+$amber-dark: mat-palette($mat-amber, A400);
+$teal-dark: mat-palette($mat-teal, A400);
+
+/*-- Light Theme Colors --*/
+$green-light: mat-palette($mat-green, A700);
+$indigo-light: mat-palette($mat-indigo, A400);
+$purple-light: mat-palette($mat-purple, 700);
+$amber-light: mat-palette($mat-amber, A700);
+$teal-light: mat-palette($mat-teal, A700);

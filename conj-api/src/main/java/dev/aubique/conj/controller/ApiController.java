@@ -1,7 +1,7 @@
 package dev.aubique.conj.controller;
 
 import com.google.gson.Gson;
-import dev.aubique.conj.enums.JsonMapperType;
+import dev.aubique.conj.model.enums.JsonMapperType;
 import dev.aubique.conj.exceptions.ResourceNotFoundException;
 import dev.aubique.conj.model.dto.VerbDto;
 import dev.aubique.conj.services.VerbService;

@@ -1,33 +1,35 @@
-<div
-  gdAreas="header | content | footer"
-  gdGap="1rem"
-  gdRows="auto"
-  id="app-container"
->
-
+<div [ngClass]="(themeClass | async).name">
   <div
-    gdArea="header"
-    id="header-grid"
+    gdAreas="header | content | footer"
+    gdGap="1rem"
+    gdRows="auto"
+    id="app-container"
+    class="background stacked"
   >
-    <!--core/header-->
-    <app-header></app-header>
-  </div>
+    <div
+      gdArea="header"
+      id="header-grid"
+    >
+      <!--core/header-->
+      <app-header></app-header>
+    </div>
 
-  <div
-    gdArea="content"
-    id="content-grid"
-  >
-    <!--content-->
-    <router-outlet fxLayoutAlign="center center"></router-outlet>
-  </div>
+    <div
+      gdArea="content"
+      id="content-grid"
+    >
+      <!--content-->
+      <router-outlet fxLayoutAlign="center center"></router-outlet>
+    </div>
 
-  <div
-    gdArea="footer"
-    gdGridAlign="stretch end"
-    id="footer-grid"
-  >
-    <!--core/footer-->
-    <app-footer></app-footer>
-  </div>
+    <div
+      gdArea="footer"
+      gdGridAlign="stretch end"
+      id="footer-grid"
+    >
+      <!--core/footer-->
+      <app-footer></app-footer>
+    </div>
 
+  </div>
 </div>
