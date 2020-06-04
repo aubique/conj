@@ -8,9 +8,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ThemeService implements OnInit {
 
+  private lightDefault: Theme;
+  private darkDefault: Theme;
+  private static readonly STORAGE_THEME = 'theme';
   private _currentTheme: BehaviorSubject<Theme>;
 
   constructor(private overlay: OverlayContainer) {
+    this.lightDefault = {name: 'light-default', display: 'Default', next: null} as Theme;
+    this.darkDefault = {name: 'dark-default', display: 'Default', next: null} as Theme;
+    this.lightDefault.next = this.darkDefault;
+    this.darkDefault.next = this.lightDefault;
   }
 
   ngOnInit(): void {
@@ -22,15 +29,30 @@ export class ThemeService implements OnInit {
   }
 
   private initThemes(): void {
-    const lightDefault = {name: 'light-default', display: 'Default', next: null} as Theme;
-    const darkDefault = {name: 'dark-default', display: 'Default', next: null} as Theme;
+    let storageTheme: string;
 
-    lightDefault.next = darkDefault;
-    darkDefault.next = lightDefault;
-
-    this._currentTheme = new BehaviorSubject<Theme>(darkDefault);
-
+    storageTheme = localStorage.getItem(ThemeService.STORAGE_THEME);
+    this.initThemeState(storageTheme);
+    console.log(storageTheme);//TODO: remove output
     this.setOverlayTheme(this._currentTheme.value.name);
+  }
+
+  private initThemeState(storageTheme: string): void {
+    switch (storageTheme) {
+      case this.darkDefault.name: {
+        this._currentTheme = new BehaviorSubject<Theme>(this.darkDefault);
+        break;
+      }
+      case this.lightDefault.name: {
+        this._currentTheme = new BehaviorSubject<Theme>(this.lightDefault);
+        break;
+      }
+      default: {
+        console.log('TRIGGER LOCAL STORAGE, null theme');
+        this._currentTheme = new BehaviorSubject<Theme>(this.darkDefault);
+        break;
+      }
+    }
   }
 
   private setOverlayTheme = (newTheme: string, oldTheme?: string) => {
@@ -42,5 +64,6 @@ export class ThemeService implements OnInit {
   public setNextTheme(): void {
     this.setOverlayTheme(this._currentTheme.value.next.name, this._currentTheme.value.name);
     this._currentTheme.next(this._currentTheme.value.next);
+    localStorage.setItem(ThemeService.STORAGE_THEME, this._currentTheme.value.name);
   }
 }

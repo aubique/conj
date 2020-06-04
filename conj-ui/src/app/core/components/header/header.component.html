@@ -15,9 +15,13 @@
       ></app-search>
     </div>
 
-    <mat-slide-toggle (click)="onSlideToggle()">
-      <mat-icon aria-hidden="false" aria-label="Change the theme color">highlight</mat-icon>
-    </mat-slide-toggle>
+    <button mat-mini-fab
+            color="basic"
+            aria-label="Change the theme color"
+            (click)="onSlideToggle()"
+            class="mat-elevation-z2">
+      <mat-icon>brightness_4</mat-icon>
+    </button>
 
   </mat-toolbar>
 
