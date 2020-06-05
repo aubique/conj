@@ -1,5 +1,6 @@
 package dev.aubique.conj.model;
 
+import dev.aubique.conj.model.annotations.Min;
 import dev.aubique.conj.model.dto.VerbDto;
 import dev.aubique.conj.services.VerbService;
 import lombok.AllArgsConstructor;
@@ -33,11 +34,14 @@ public class VerbEntity {
     @Column(name = "name", length = 32, nullable = false)
     private String name;
 
-    // Indicative group
+    // INDICATIVE group
+    @Min(order = 1)
     @ElementCollection
     private List<String> indPresentList;
+    @Min(order = 2)
     @ElementCollection
     private List<String> indPresentPerfectList;
+    @Min(order = 3)
     @ElementCollection
     private List<String> indImperfectList;
     @ElementCollection
@@ -46,12 +50,13 @@ public class VerbEntity {
     private List<String> indSimplePastList;
     @ElementCollection
     private List<String> indPastPerfectList;
+    @Min(order = 4)
     @ElementCollection
     private List<String> indFutureList;
     @ElementCollection
     private List<String> indPastFutureList;
 
-    // Subjunctive group
+    // SUBJUNCTIVE group
     @ElementCollection
     private List<String> subPresentList;
     @ElementCollection
@@ -61,7 +66,8 @@ public class VerbEntity {
     @ElementCollection
     private List<String> subPluperfectList;
 
-    // Conditional Imperative group
+    // CONDITIONAL & IMPERATIVE group
+    @Min(order = 5)
     @ElementCollection
     private List<String> conPresentList;
     @ElementCollection
