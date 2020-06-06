@@ -2,6 +2,7 @@ package dev.aubique.conj.services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+@Log4j2
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class ParserServiceImplTest {
@@ -38,7 +40,6 @@ class ParserServiceImplTest {
     void parserShouldReturnJsonWithSearchVerb() {
         final var parsedObj = parser.parseVerb(SEARCH_VERB);
         Assertions.assertThat(gsonPlain.toJson(parsedObj)).contains(SEARCH_VERB);
-//        final var gsonDetailed = new GsonBuilder().setPrettyPrinting().create();
-//        System.out.println(gsonDetailed.toJson(parsedObj));
+        log.info(gsonDetailed.toJson(parsedObj));
     }
 }

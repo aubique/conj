@@ -41,7 +41,7 @@ class MaxMapperTest {
 
     @AfterEach
     void tearDown() {
-//        System.out.println(gson.toJson(mapperReal.map()));//Debug output
+//        log.debug(gson.toJson(mapperReal.map()));
     }
 
     @DisplayName("mapSubjunctive should return valid Indicative Present Perfect tense")

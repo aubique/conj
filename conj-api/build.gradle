@@ -12,6 +12,8 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    testImplementation.extendsFrom compileOnly
+    testAnnotationProcessor.extendsFrom annotationProcessor
 }
 
 repositories {
@@ -20,12 +22,13 @@ repositories {
 
 dependencies {
     /// ANGULAR SPA
-    //clientSide(project(':conj-ui'))
+    clientSide(project(':conj-ui'))
     /// SPRING BOOT, TESTING
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation('org.springframework.boot:spring-boot-starter-web') {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-json'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
