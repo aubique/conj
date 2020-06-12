@@ -1,10 +1,11 @@
 package dev.aubique.conj.controller;
 
 import com.google.gson.Gson;
-import dev.aubique.conj.model.enums.JsonMapperType;
 import dev.aubique.conj.exceptions.ResourceNotFoundException;
 import dev.aubique.conj.model.dto.VerbDto;
+import dev.aubique.conj.model.enums.JsonMapperType;
 import dev.aubique.conj.services.VerbService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Controller used to showcase the REST API
  */
+@Log4j2
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/")
@@ -42,6 +44,7 @@ public class ApiController {
             final var verbMax = service.getVerbDto(infinitive, type);
             return ResponseEntity.ok(verbMax);
         } catch (ResourceNotFoundException ex) {
+            log.error(ex.getMessage());
             // Not Found (404)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }

@@ -1,9 +1,9 @@
 package dev.aubique.conj.services.impl;
 
-import dev.aubique.conj.model.enums.JsonMapperType;
 import dev.aubique.conj.exceptions.ResourceNotFoundException;
 import dev.aubique.conj.model.VerbEntity;
 import dev.aubique.conj.model.dto.VerbDto;
+import dev.aubique.conj.model.enums.JsonMapperType;
 import dev.aubique.conj.repository.VerbRepository;
 import dev.aubique.conj.services.MapperService;
 import dev.aubique.conj.services.ParserService;
@@ -25,6 +25,7 @@ public class VerbServiceImpl implements VerbService {
     @Autowired
     private MapperService<VerbEntity, VerbDto> mapper;
 
+    @Deprecated
     public VerbEntity getVerbById(Long verbId) {
         return repo.findById(verbId).get();
     }
@@ -70,7 +71,6 @@ public class VerbServiceImpl implements VerbService {
 
         saveVerb(verbObj);
         return doInternalSearch(verbObj.getName());
-//        return Optional.of(verbObj);
     }
 
     public void saveVerb(VerbEntity verbObj) {

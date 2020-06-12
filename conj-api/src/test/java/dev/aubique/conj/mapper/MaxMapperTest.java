@@ -1,6 +1,7 @@
 package dev.aubique.conj.mapper;
 
 import com.google.gson.Gson;
+import dev.aubique.conj.mapper.impl.MaxMapper;
 import dev.aubique.conj.mock.AllerVerbFactory;
 import dev.aubique.conj.model.VerbEntity;
 import org.junit.jupiter.api.*;
@@ -8,12 +9,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -42,13 +41,13 @@ class MaxMapperTest {
 
     @AfterEach
     void tearDown() {
-//        System.out.println(gson.toJson(mapperReal.map()));//Debug output
+//        log.debug(gson.toJson(mapperReal.map()));
     }
 
     @DisplayName("mapSubjunctive should return valid Indicative Present Perfect tense")
     @Test
     void shouldMapIndicativeTenseCorrectlyForPresentPerfectTense() {
-        final List<String> tenseList = mapperReal.mapIndicative(new ArrayList<>())
+        final List<String> tenseList = mapperReal.mapIndicative()
                 .getList().get(INDICATIVE_PRESENT_PERFECT_TENSE_ID).getList();
         validateMapTense(AllerVerbFactory.PRESENT_PERFECT_INDICATIVE, tenseList);
     }
@@ -56,7 +55,7 @@ class MaxMapperTest {
     @DisplayName("mapSubjunctive should return valid Subjunctive Present tense")
     @Test
     void shouldMapSubjunctiveCorrectlyForSubPresentTense() {
-        final List<String> tenseList = mapperReal.mapSubjunctive(new ArrayList<>())
+        final List<String> tenseList = mapperReal.mapSubjunctive()
                 .getList().get(SUBJUNCTIVE_PRESENT_TENSE_ID).getList();
         validateMapTense(AllerVerbFactory.PRESENT_SUBJUNCTIVE, tenseList);
     }
@@ -64,7 +63,7 @@ class MaxMapperTest {
     @DisplayName("mapSubjunctive should return valid Conditional Present tense")
     @Test
     void shouldMapConditionalTenseCorrectlyForConPresentTense() {
-        final List<String> tenseList = mapperReal.mapConditional(new ArrayList<>())
+        final List<String> tenseList = mapperReal.mapConditional()
                 .getList().get(CONDITIONAL_PRESENT_TENSE_ID).getList();
         validateMapTense(AllerVerbFactory.PRESENT_CONDITIONAL, tenseList);
     }
